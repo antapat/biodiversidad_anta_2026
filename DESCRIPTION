@@ -1,8 +1,26 @@
 Type: Application
-Title: Sistema de Biodiversidad Territorial de Anta
-Description: Aplicación Shiny para consulta y descarga de indicadores de biodiversidad territorial.
+Package: biodiversidadAnta
+Title: Sistema de Información y Monitoreo de Biodiversidad Territorial de Anta
 Version: 1.0.0
+Authors@R: c(
+    person(given = "Paul Efren", family = "Santos Andrade", role = c("aut", "cre"), 
+           email = "coordinacion.pat.anta@gmail.com", 
+           comment = c(Cargo = "Especialista SIG y Modelamiento Territorial - Equipo Tecnico PAT Anta")),
+    person(given = "Municipalidad Provincial de Anta", role = "cph", 
+           comment = "Gerencia de Desarrollo Urbano y Rural (GDUR)")
+  )
+Maintainer: Paul Efren Santos Andrade <coordinacion.pat.anta@gmail.com>
+Description: Plataforma interactiva en R Shiny y PostGIS para el análisis espacial,
+    diagnostico ecologico, monitoreo de especies e indicadores de biodiversidad
+    territorial en los nueve distritos de la Provincia de Anta (Cusco, Peru).
+    La aplicacion se desarrolla en el marco del proyecto de inversion publica:
+    "Mejoramiento de los Servicios de Gestion Territorial y Desarrollo Urbano Sostenible
+    del Distrito de Anta - Provincia de Anta - Departamento de Cusco", a cargo del
+    equipo tecnico responsable de la formulacion de la actualizacion del Plan de
+    Acondicionamiento Territorial de Anta (PAT Anta), bajo la coordinacion de la
+    Gerencia de Desarrollo Urbano y Rural (GDUR) de la Municipalidad Provincial de Anta.
 Encoding: UTF-8
+Language: es
 Imports: 
     bslib,
     DBI,
