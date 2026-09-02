@@ -4,9 +4,9 @@
   "platform": "4.6.1",
   "metadata": {
     "appmode": "shiny",
-    "primary_rmd": null,
-    "primary_html": null,
-    "content_category": null,
+    "primary_rmd": {},
+    "primary_html": {},
+    "content_category": {},
     "has_parameters": false
   },
   "packages": {
@@ -40,33 +40,6 @@
         "Repository": "CRAN",
         "Date/Publication": "2026-02-25 06:31:27 UTC",
         "Built": "R 4.6.1; ; 2026-08-30 16:54:52 UTC; windows"
-      }
-    },
-    "DT": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Type": "Package",
-        "Package": "DT",
-        "Title": "A Wrapper of the JavaScript Library 'DataTables'",
-        "Version": "0.34.0",
-        "Authors@R": "c(\n    person(\"Yihui\", \"Xie\", role = \"aut\"),\n    person(\"Joe\", \"Cheng\", , \"joe@posit.co\", role = \"aut\"),\n    person(\"Xianying\", \"Tan\", role = \"aut\"),\n    person(\"Garrick\", \"Aden-Buie\", , \"garrick@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-7111-0077\")),\n    person(\"JJ\", \"Allaire\", role = \"ctb\"),\n    person(\"Maximilian\", \"Girlich\", role = \"ctb\"),\n    person(\"Greg\", \"Freedman Ellis\", role = \"ctb\"),\n    person(\"Johannes\", \"Rauh\", role = \"ctb\"),\n    person(\"SpryMedia Limited\", role = c(\"ctb\", \"cph\"),\n           comment = \"DataTables in htmlwidgets/lib\"),\n    person(\"Brian\", \"Reavis\", role = c(\"ctb\", \"cph\"),\n           comment = \"selectize.js in htmlwidgets/lib\"),\n    person(\"Leon\", \"Gersen\", role = c(\"ctb\", \"cph\"),\n           comment = \"noUiSlider in htmlwidgets/lib\"),\n    person(\"Bartek\", \"Szopka\", role = c(\"ctb\", \"cph\"),\n           comment = \"jquery.highlight.js in htmlwidgets/lib\"),\n    person(\"Alex\", \"Pickering\", role = \"ctb\"),\n    person(\"William\", \"Holmes\", role = \"ctb\"),\n    person(\"Mikko\", \"Marttila\", role = \"ctb\"),\n    person(\"Andres\", \"Quintero\", role = \"ctb\"),\n    person(\"Stéphane\", \"Laurent\", role = \"ctb\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
-        "Description": "Data objects in R can be rendered as HTML tables using the\n    JavaScript library 'DataTables' (typically via R Markdown or Shiny).\n    The 'DataTables' library has been included in this R package. The\n    package name 'DT' is an abbreviation of 'DataTables'.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://github.com/rstudio/DT",
-        "BugReports": "https://github.com/rstudio/DT/issues",
-        "Imports": "crosstalk, htmltools (>= 0.3.6), htmlwidgets (>= 1.3),\njquerylib, jsonlite (>= 0.9.16), magrittr, promises",
-        "Suggests": "bslib, future, httpuv, knitr (>= 1.8), rmarkdown, shiny (>=\n1.6), testit, tibble",
-        "VignetteBuilder": "knitr",
-        "Encoding": "UTF-8",
-        "RoxygenNote": "7.3.2",
-        "NeedsCompilation": "no",
-        "Packaged": "2025-09-02 13:12:27 UTC; garrick",
-        "Author": "Yihui Xie [aut],\n  Joe Cheng [aut],\n  Xianying Tan [aut],\n  Garrick Aden-Buie [aut, cre] (ORCID:\n    <https://orcid.org/0000-0002-7111-0077>),\n  JJ Allaire [ctb],\n  Maximilian Girlich [ctb],\n  Greg Freedman Ellis [ctb],\n  Johannes Rauh [ctb],\n  SpryMedia Limited [ctb, cph] (DataTables in htmlwidgets/lib),\n  Brian Reavis [ctb, cph] (selectize.js in htmlwidgets/lib),\n  Leon Gersen [ctb, cph] (noUiSlider in htmlwidgets/lib),\n  Bartek Szopka [ctb, cph] (jquery.highlight.js in htmlwidgets/lib),\n  Alex Pickering [ctb],\n  William Holmes [ctb],\n  Mikko Marttila [ctb],\n  Andres Quintero [ctb],\n  Stéphane Laurent [ctb],\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Garrick Aden-Buie <garrick@posit.co>",
-        "Repository": "CRAN",
-        "Date/Publication": "2025-09-02 22:00:06 UTC",
-        "Built": "R 4.6.1; ; 2026-08-30 19:38:34 UTC; windows"
       }
     },
     "KernSmooth": {
@@ -237,35 +210,6 @@
         "Repository": "CRAN",
         "Date/Publication": "2026-07-05 08:30:08 UTC",
         "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-08-19 11:46:13 UTC; windows",
-        "Archs": "x64"
-      }
-    },
-    "RcppTOML": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "RcppTOML",
-        "Type": "Package",
-        "Title": "'Rcpp' Bindings to Parser for \"Tom's Obvious Markup Language\"",
-        "Version": "0.2.3",
-        "Date": "2025-03-08",
-        "Authors@R": "c(person(\"Dirk\", \"Eddelbuettel\", role = c(\"aut\", \"cre\"), email = \"edd@debian.org\",\n                    comment = c(ORCID = \"0000-0001-6419-907X\")),\n             person(\"Mark\", \"Gillard\", role = \"aut\",\n                    comment = \"Author of 'toml++' header library\"))",
-        "Description": "The configuration format defined by 'TOML' (which expands to\n \"Tom's Obvious Markup Language\") specifies an excellent format\n (described at <https://toml.io/en/>) suitable for both human editing\n as well as the common uses of a machine-readable format. This package\n uses 'Rcpp' to connect to the 'toml++' parser written by Mark Gillard\n to R.",
-        "SystemRequirements": "A C++17 compiler",
-        "BugReports": "https://github.com/eddelbuettel/rcpptoml/issues",
-        "URL": "http://dirk.eddelbuettel.com/code/rcpp.toml.html",
-        "Imports": "Rcpp (>= 1.0.8)",
-        "Depends": "R (>= 3.3.0)",
-        "LinkingTo": "Rcpp",
-        "Suggests": "tinytest",
-        "License": "GPL (>= 2)",
-        "NeedsCompilation": "yes",
-        "Packaged": "2025-03-08 13:54:57 UTC; edd",
-        "Author": "Dirk Eddelbuettel [aut, cre] (<https://orcid.org/0000-0001-6419-907X>),\n  Mark Gillard [aut] (Author of 'toml++' header library)",
-        "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
-        "Repository": "CRAN",
-        "Date/Publication": "2025-03-08 14:30:06 UTC",
-        "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-08-30 16:56:17 UTC; windows",
         "Archs": "x64"
       }
     },
@@ -589,35 +533,6 @@
         "Archs": "x64"
       }
     },
-    "clipr": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Type": "Package",
-        "Package": "clipr",
-        "Title": "Read and Write from the System Clipboard",
-        "Version": "0.8.1",
-        "Authors@R": "c(\n    person(\"Matthew\", \"Lincoln\", , \"matthew.d.lincoln@gmail.com\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-4387-3384\")),\n    person(\"Louis\", \"Maddox\", role = \"ctb\"),\n    person(\"Steve\", \"Simpson\", role = \"ctb\"),\n    person(\"Jennifer\", \"Bryan\", role = \"ctb\")\n  )",
-        "Description": "Simple utility functions to read from and write to\n    the Windows, OS X, and X11 clipboards.",
-        "License": "GPL-3",
-        "URL": "https://github.com/mdlincoln/clipr,\nhttp://matthewlincoln.net/clipr/",
-        "BugReports": "https://github.com/mdlincoln/clipr/issues",
-        "Imports": "utils",
-        "Suggests": "covr, knitr, rmarkdown, rstudioapi (>= 0.5), testthat (>=\n2.0.0)",
-        "VignetteBuilder": "knitr",
-        "Encoding": "UTF-8",
-        "Language": "en-US",
-        "RoxygenNote": "7.3.3",
-        "SystemRequirements": "xclip (https://github.com/astrand/xclip) or xsel\n(http://www.vergenet.net/~conrad/software/xsel/) for accessing\nthe X11 clipboard, or wl-clipboard\n(https://github.com/bugaevc/wl-clipboard) for systems using\nWayland.",
-        "NeedsCompilation": "no",
-        "Packaged": "2026-05-25 05:04:26 UTC; mlincoln",
-        "Author": "Matthew Lincoln [aut, cre] (ORCID:\n    <https://orcid.org/0000-0002-4387-3384>),\n  Louis Maddox [ctb],\n  Steve Simpson [ctb],\n  Jennifer Bryan [ctb]",
-        "Maintainer": "Matthew Lincoln <matthew.d.lincoln@gmail.com>",
-        "Repository": "CRAN",
-        "Date/Publication": "2026-05-25 05:50:02 UTC",
-        "Built": "R 4.6.0; ; 2026-06-02 01:42:15 UTC; windows"
-      }
-    },
     "commonmark": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -672,33 +587,6 @@
         "Repository": "CRAN",
         "Date/Publication": "2026-05-06 14:40:12 UTC",
         "Built": "R 4.6.1; ; 2026-08-19 11:46:07 UTC; windows"
-      }
-    },
-    "crayon": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "crayon",
-        "Title": "Colored Terminal Output",
-        "Version": "1.5.3",
-        "Authors@R": "c(\n    person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")),\n    person(\"Brodie\", \"Gaslam\", , \"brodie.gaslam@yahoo.com\", role = \"ctb\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
-        "Description": "The crayon package is now superseded. Please use the 'cli'\n    package for new projects.  Colored terminal output on terminals that\n    support 'ANSI' color and highlight codes. It also works in 'Emacs'\n    'ESS'. 'ANSI' color support is automatically detected. Colors and\n    highlighting can be combined and nested. New styles can also be\n    created easily.  This package was inspired by the 'chalk' 'JavaScript'\n    project.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://r-lib.github.io/crayon/, https://github.com/r-lib/crayon",
-        "BugReports": "https://github.com/r-lib/crayon/issues",
-        "Imports": "grDevices, methods, utils",
-        "Suggests": "mockery, rstudioapi, testthat, withr",
-        "Config/Needs/website": "tidyverse/tidytemplate",
-        "Encoding": "UTF-8",
-        "RoxygenNote": "7.3.1",
-        "Collate": "'aaa-rstudio-detect.R' 'aaaa-rematch2.R'\n'aab-num-ansi-colors.R' 'aac-num-ansi-colors.R' 'ansi-256.R'\n'ansi-palette.R' 'combine.R' 'string.R' 'utils.R'\n'crayon-package.R' 'disposable.R' 'enc-utils.R' 'has_ansi.R'\n'has_color.R' 'link.R' 'styles.R' 'machinery.R' 'parts.R'\n'print.R' 'style-var.R' 'show.R' 'string_operations.R'",
-        "NeedsCompilation": "no",
-        "Packaged": "2024-06-20 11:49:08 UTC; gaborcsardi",
-        "Author": "Gábor Csárdi [aut, cre],\n  Brodie Gaslam [ctb],\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-        "Repository": "CRAN",
-        "Date/Publication": "2024-06-20 13:00:02 UTC",
-        "Built": "R 4.6.0; ; 2026-06-02 01:42:17 UTC; windows"
       }
     },
     "crosstalk": {
@@ -1409,37 +1297,6 @@
         "Built": "R 4.6.0; ; 2026-06-02 03:17:03 UTC; windows"
       }
     },
-    "httr2": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "httr2",
-        "Title": "Perform HTTP Requests and Process the Responses",
-        "Version": "1.2.2",
-        "Authors@R": "c(\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\")),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")),\n    person(\"Maximilian\", \"Girlich\", role = \"ctb\")\n  )",
-        "Description": "Tools for creating and modifying HTTP requests, then\n    performing them and processing the results. 'httr2' is a modern\n    re-imagining of 'httr' that uses a pipe-based interface and solves\n    more of the problems that API wrapping packages face.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://httr2.r-lib.org, https://github.com/r-lib/httr2",
-        "BugReports": "https://github.com/r-lib/httr2/issues",
-        "Depends": "R (>= 4.1)",
-        "Imports": "cli (>= 3.0.0), curl (>= 6.4.0), glue, lifecycle, magrittr,\nopenssl, R6, rappdirs, rlang (>= 1.1.0), vctrs (>= 0.6.3),\nwithr",
-        "Suggests": "askpass, bench, clipr, covr, docopt, httpuv, jose, jsonlite,\nknitr, later (>= 1.4.0), nanonext, otel (>= 0.2.0), otelsdk (>=\n0.2.0), paws.common (>= 0.8.0), promises, rmarkdown, testthat\n(>= 3.1.8), tibble, webfakes (>= 1.4.0), xml2",
-        "VignetteBuilder": "knitr",
-        "Config/Needs/website": "tidyverse/tidytemplate",
-        "Config/testthat/edition": "3",
-        "Config/testthat/parallel": "true",
-        "Config/testthat/start-first": "resp-stream, req-perform",
-        "Encoding": "UTF-8",
-        "RoxygenNote": "7.3.3",
-        "NeedsCompilation": "no",
-        "Packaged": "2025-12-05 17:46:06 UTC; hadleywickham",
-        "Author": "Hadley Wickham [aut, cre],\n  Posit Software, PBC [cph, fnd],\n  Maximilian Girlich [ctb]",
-        "Maintainer": "Hadley Wickham <hadley@posit.co>",
-        "Repository": "CRAN",
-        "Date/Publication": "2025-12-08 09:50:02 UTC",
-        "Built": "R 4.6.0; ; 2026-06-02 03:17:05 UTC; windows"
-      }
-    },
     "isoband": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -1470,35 +1327,6 @@
         "Date/Publication": "2025-12-07 06:10:07 UTC",
         "Built": "R 4.6.0; x86_64-w64-mingw32; 2026-06-02 02:38:59 UTC; windows",
         "Archs": "x64"
-      }
-    },
-    "jose": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "jose",
-        "Type": "Package",
-        "Title": "JavaScript Object Signing and Encryption",
-        "Version": "2.0.0",
-        "Authors@R": "person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"), \n    email = \"jeroenooms@gmail.com\", comment = c(ORCID = \"0000-0002-4035-0289\"))",
-        "Description": "Read and write JSON Web Keys (JWK, rfc7517), generate and verify JSON\n    Web Signatures (JWS, rfc7515) and encode/decode JSON Web Tokens (JWT, rfc7519)\n    <https://datatracker.ietf.org/wg/jose/documents/>. These standards provide \n    modern signing and encryption formats that are natively supported by browsers\n    via the JavaScript WebCryptoAPI <https://www.w3.org/TR/webcrypto/#jose>, \n    and used by services like OAuth 2.0, LetsEncrypt, and Github Apps.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://r-lib.r-universe.dev/jose",
-        "BugReports": "https://github.com/r-lib/jose/issues",
-        "Depends": "openssl (>= 1.2.1)",
-        "Imports": "jsonlite",
-        "RoxygenNote": "7.3.3.9000",
-        "VignetteBuilder": "knitr",
-        "Suggests": "spelling, testthat, knitr, rmarkdown",
-        "Encoding": "UTF-8",
-        "Language": "en-US",
-        "NeedsCompilation": "no",
-        "Packaged": "2026-04-21 21:15:42 UTC; jeroen",
-        "Author": "Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>)",
-        "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
-        "Repository": "CRAN",
-        "Date/Publication": "2026-04-22 06:40:03 UTC",
-        "Built": "R 4.6.1; ; 2026-08-30 18:31:54 UTC; windows"
       }
     },
     "jquerylib": {
@@ -1935,34 +1763,6 @@
         "Built": "R 4.6.0; ; 2026-06-02 01:42:20 UTC; windows"
       }
     },
-    "packrat": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Type": "Package",
-        "Package": "packrat",
-        "Title": "A Dependency Management System for Projects and their R Package\nDependencies",
-        "Version": "0.9.3",
-        "Authors@R": "c(\n    person(\"Aron\", \"Atkins\", , \"aron@posit.co\", role = c(\"aut\", \"cre\")),\n    person(\"Toph\", \"Allen\", role = \"aut\"),\n    person(\"Kevin\", \"Ushey\", role = \"aut\"),\n    person(\"Jonathan\", \"McPherson\", role = \"aut\"),\n    person(\"Joe\", \"Cheng\", role = \"aut\"),\n    person(\"JJ\", \"Allaire\", role = \"aut\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
-        "Description": "Manage the R packages your project depends on in an isolated,\n    portable, and reproducible way.",
-        "License": "GPL-2",
-        "URL": "https://github.com/rstudio/packrat",
-        "BugReports": "https://github.com/rstudio/packrat/issues",
-        "Depends": "R (>= 3.0.0)",
-        "Imports": "tools, utils",
-        "Suggests": "devtools, httr, knitr, mockery, rmarkdown, testthat (>=\n3.0.0), webfakes, withr",
-        "Config/testthat/edition": "3",
-        "Encoding": "UTF-8",
-        "RoxygenNote": "7.3.2",
-        "NeedsCompilation": "no",
-        "Packaged": "2025-06-16 19:37:19 UTC; aron",
-        "Author": "Aron Atkins [aut, cre],\n  Toph Allen [aut],\n  Kevin Ushey [aut],\n  Jonathan McPherson [aut],\n  Joe Cheng [aut],\n  JJ Allaire [aut],\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Aron Atkins <aron@posit.co>",
-        "Repository": "CRAN",
-        "Date/Publication": "2025-06-16 20:00:02 UTC",
-        "Built": "R 4.6.1; ; 2026-08-30 17:11:56 UTC; windows"
-      }
-    },
     "pillar": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -2070,59 +1870,6 @@
         "Date/Publication": "2026-03-15 16:50:02 UTC",
         "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-08-19 11:46:52 UTC; windows",
         "Archs": "x64"
-      }
-    },
-    "prettyunits": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "prettyunits",
-        "Title": "Pretty, Human Readable Formatting of Quantities",
-        "Version": "1.2.0",
-        "Authors@R": "c(\n  person(\"Gabor\", \"Csardi\", email=\"csardi.gabor@gmail.com\", role=c(\"aut\", \"cre\")),\n  person(\"Bill\", \"Denney\", email=\"wdenney@humanpredictions.com\", role=c(\"ctb\"), comment=c(ORCID=\"0000-0002-5759-428X\")),\n  person(\"Christophe\", \"Regouby\", email=\"christophe.regouby@free.fr\", role=c(\"ctb\"))\n  )",
-        "Description": "Pretty, human readable formatting of quantities.\n    Time intervals: '1337000' -> '15d 11h 23m 20s'.\n    Vague time intervals: '2674000' -> 'about a month ago'.\n    Bytes: '1337' -> '1.34 kB'.\n    Rounding: '99' with 3 significant digits -> '99.0'\n    p-values: '0.00001' -> '<0.0001'.\n    Colors: '#FF0000' -> 'red'.\n    Quantities: '1239437' -> '1.24 M'.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://github.com/r-lib/prettyunits",
-        "BugReports": "https://github.com/r-lib/prettyunits/issues",
-        "Depends": "R(>= 2.10)",
-        "Suggests": "codetools, covr, testthat",
-        "RoxygenNote": "7.2.3",
-        "Encoding": "UTF-8",
-        "NeedsCompilation": "no",
-        "Packaged": "2023-09-24 10:53:19 UTC; gaborcsardi",
-        "Author": "Gabor Csardi [aut, cre],\n  Bill Denney [ctb] (<https://orcid.org/0000-0002-5759-428X>),\n  Christophe Regouby [ctb]",
-        "Maintainer": "Gabor Csardi <csardi.gabor@gmail.com>",
-        "Repository": "CRAN",
-        "Date/Publication": "2023-09-24 21:10:02 UTC",
-        "Built": "R 4.6.0; ; 2026-06-02 01:42:16 UTC; windows"
-      }
-    },
-    "progress": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "progress",
-        "Title": "Terminal Progress Bars",
-        "Version": "1.2.3",
-        "Authors@R": "c(\n    person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")),\n    person(\"Rich\", \"FitzJohn\", role = \"aut\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
-        "Description": "Configurable Progress bars, they may include percentage,\n    elapsed time, and/or the estimated completion time. They work in\n    terminals, in 'Emacs' 'ESS', 'RStudio', 'Windows' 'Rgui' and the\n    'macOS' 'R.app'. The package also provides a 'C++' 'API', that works\n    with or without 'Rcpp'.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://github.com/r-lib/progress#readme,\nhttp://r-lib.github.io/progress/",
-        "BugReports": "https://github.com/r-lib/progress/issues",
-        "Depends": "R (>= 3.6)",
-        "Imports": "crayon, hms, prettyunits, R6",
-        "Suggests": "Rcpp, testthat (>= 3.0.0), withr",
-        "Config/Needs/website": "tidyverse/tidytemplate",
-        "Config/testthat/edition": "3",
-        "Encoding": "UTF-8",
-        "RoxygenNote": "7.2.3",
-        "NeedsCompilation": "no",
-        "Packaged": "2023-12-05 09:33:10 UTC; gaborcsardi",
-        "Author": "Gábor Csárdi [aut, cre],\n  Rich FitzJohn [aut],\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-        "Repository": "CRAN",
-        "Date/Publication": "2023-12-06 10:30:02 UTC",
-        "Built": "R 4.6.0; ; 2026-06-02 03:37:47 UTC; windows"
       }
     },
     "promises": {
@@ -2327,71 +2074,6 @@
         "Built": "R 4.6.1; ; 2026-08-30 19:18:23 UTC; windows"
       }
     },
-    "readr": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "readr",
-        "Title": "Read Rectangular Text Data",
-        "Version": "2.2.0",
-        "Authors@R": "c(\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"),\n    person(\"Jim\", \"Hester\", role = \"aut\"),\n    person(\"Romain\", \"Francois\", role = \"ctb\"),\n    person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-6983-2759\")),\n    person(\"Shelby\", \"Bearrows\", role = \"ctb\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"),\n           comment = c(ROR = \"03wc8by49\")),\n    person(\"https://github.com/mandreyel/\", role = \"cph\",\n           comment = \"mio library\"),\n    person(\"Jukka\", \"Jylänki\", role = c(\"ctb\", \"cph\"),\n           comment = \"grisu3 implementation\"),\n    person(\"Mikkel\", \"Jørgensen\", role = c(\"ctb\", \"cph\"),\n           comment = \"grisu3 implementation\")\n  )",
-        "Description": "The goal of 'readr' is to provide a fast and friendly way to\n    read rectangular data (like 'csv', 'tsv', and 'fwf').  It is designed\n    to flexibly parse many types of data found in the wild, while still\n    cleanly failing when data unexpectedly changes.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://readr.tidyverse.org, https://github.com/tidyverse/readr",
-        "BugReports": "https://github.com/tidyverse/readr/issues",
-        "Depends": "R (>= 4.1)",
-        "Imports": "cli, clipr, crayon, glue, hms (>= 0.4.1), lifecycle, methods,\nR6, rlang, tibble, utils, vroom (>= 1.7.0), withr",
-        "Suggests": "covr, curl, datasets, knitr, rmarkdown, spelling, stringi,\ntestthat (>= 3.2.0), tzdb (>= 0.1.1), waldo, xml2",
-        "LinkingTo": "cpp11, tzdb (>= 0.1.1)",
-        "VignetteBuilder": "knitr",
-        "Config/Needs/website": "tidyverse, tidyverse/tidytemplate",
-        "Config/testthat/edition": "3",
-        "Config/testthat/parallel": "false",
-        "Config/usethis/last-upkeep": "2025-11-14",
-        "Encoding": "UTF-8",
-        "Language": "en-US",
-        "RoxygenNote": "7.3.3",
-        "NeedsCompilation": "yes",
-        "Packaged": "2026-02-19 07:07:31 UTC; jenny",
-        "Author": "Hadley Wickham [aut],\n  Jim Hester [aut],\n  Romain Francois [ctb],\n  Jennifer Bryan [aut, cre] (ORCID:\n    <https://orcid.org/0000-0002-6983-2759>),\n  Shelby Bearrows [ctb],\n  Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>),\n  https://github.com/mandreyel/ [cph] (mio library),\n  Jukka Jylänki [ctb, cph] (grisu3 implementation),\n  Mikkel Jørgensen [ctb, cph] (grisu3 implementation)",
-        "Maintainer": "Jennifer Bryan <jenny@posit.co>",
-        "Repository": "CRAN",
-        "Date/Publication": "2026-02-19 18:10:02 UTC",
-        "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-08-19 14:38:28 UTC; windows",
-        "Archs": "x64"
-      }
-    },
-    "renv": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "renv",
-        "Type": "Package",
-        "Title": "Project Environments",
-        "Version": "1.2.4",
-        "Authors@R": "c(\n    person(\"Kevin\", \"Ushey\", role = c(\"aut\", \"cre\"), email = \"kevin@rstudio.com\",\n           comment = c(ORCID = \"0000-0003-2880-7407\")),\n    person(\"Hadley\", \"Wickham\", role = c(\"aut\"), email = \"hadley@rstudio.com\",\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n    )",
-        "Description": "A dependency management toolkit for R. Using 'renv', you can create\n    and manage project-local R libraries, save the state of these libraries to\n    a 'lockfile', and later restore your library as required. Together, these\n    tools can help make your projects more isolated, portable, and reproducible.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://rstudio.github.io/renv/, https://github.com/rstudio/renv",
-        "BugReports": "https://github.com/rstudio/renv/issues",
-        "Imports": "utils",
-        "Suggests": "BiocManager, cli, compiler, covr, cpp11, curl, devtools,\ngenerics, gitcreds, jsonlite, jsonvalidate, knitr, miniUI,\nmodules, packrat, pak, R6, remotes, reticulate, rmarkdown,\nrstudioapi, shiny, testthat, uuid, waldo, yaml, webfakes",
-        "Encoding": "UTF-8",
-        "VignetteBuilder": "knitr",
-        "Config/Needs/website": "tidyverse/tidytemplate",
-        "Config/testthat/edition": "3",
-        "Config/testthat/parallel": "true",
-        "Config/testthat/start-first": "bioconductor,python,install,restore,snapshot,retrieve,remotes",
-        "Config/roxygen2/version": "8.0.0",
-        "NeedsCompilation": "no",
-        "Packaged": "2026-08-03 20:47:11 UTC; kevin",
-        "Author": "Kevin Ushey [aut, cre] (ORCID: <https://orcid.org/0000-0003-2880-7407>),\n  Hadley Wickham [aut] (ORCID: <https://orcid.org/0000-0003-4757-117X>),\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Kevin Ushey <kevin@rstudio.com>",
-        "Repository": "CRAN",
-        "Date/Publication": "2026-08-03 23:10:02 UTC",
-        "Built": "R 4.6.1; ; 2026-08-19 11:48:34 UTC; windows"
-      }
-    },
     "rlang": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -2455,63 +2137,6 @@
         "Repository": "CRAN",
         "Date/Publication": "2026-03-26 16:30:02 UTC",
         "Built": "R 4.6.1; ; 2026-06-25 02:51:00 UTC; windows"
-      }
-    },
-    "rsconnect": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Type": "Package",
-        "Package": "rsconnect",
-        "Title": "Deploy Docs, Apps, and APIs to 'Posit Connect', 'shinyapps.io',\nand 'RPubs'",
-        "Version": "1.10.1",
-        "Authors@R": "c(\n    person(\"Aron\", \"Atkins\", , \"aron@posit.co\", role = c(\"aut\", \"cre\")),\n    person(\"Toph\", \"Allen\", role = \"aut\"),\n    person(\"Hadley\", \"Wickham\", role = \"aut\"),\n    person(\"Jonathan\", \"McPherson\", role = \"aut\"),\n    person(\"JJ\", \"Allaire\", role = \"aut\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
-        "Description": "Programmatic deployment interface for 'RPubs',\n    'shinyapps.io', and 'Posit Connect'. Supported content types include R\n    Markdown documents, Shiny applications, Plumber APIs, plots, and\n    static web content.",
-        "License": "GPL-2",
-        "URL": "https://rstudio.github.io/rsconnect/,\nhttps://github.com/rstudio/rsconnect",
-        "BugReports": "https://github.com/rstudio/rsconnect/issues",
-        "Depends": "R (>= 3.5.0)",
-        "Imports": "cli, curl (>= 7.0.0), digest, httr2, jsonlite, lifecycle,\nopenssl (>= 2.4.2), packrat (>= 0.6), renv (>= 1.0.0), rlang\n(>= 1.0.0), rstudioapi (>= 0.18.0), snowflakeauth, tools, yaml\n(>= 2.1.5), utils",
-        "Suggests": "Biobase, BiocManager, foreign, knitr, MASS, plumber (>=\n0.3.2), quarto, reticulate, rmarkdown (>= 1.1), shiny, testthat\n(>= 3.1.9), webfakes, withr",
-        "VignetteBuilder": "knitr, rmarkdown",
-        "Config/Needs/website": "tidyverse/tidytemplate",
-        "Config/testthat/edition": "3",
-        "Config/testthat/parallel": "true",
-        "Config/Python/Note": "Python <= 3.10 requires tomllib package for\npyproject.toml parsing",
-        "Encoding": "UTF-8",
-        "Config/roxygen2/version": "8.0.0",
-        "NeedsCompilation": "no",
-        "Packaged": "2026-07-06 20:44:15 UTC; aron",
-        "Author": "Aron Atkins [aut, cre],\n  Toph Allen [aut],\n  Hadley Wickham [aut],\n  Jonathan McPherson [aut],\n  JJ Allaire [aut],\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Aron Atkins <aron@posit.co>",
-        "Repository": "CRAN",
-        "Date/Publication": "2026-07-08 06:40:02 UTC",
-        "Built": "R 4.6.1; ; 2026-08-19 13:51:08 UTC; windows"
-      }
-    },
-    "rstudioapi": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "rstudioapi",
-        "Title": "Safely Access the RStudio API",
-        "Description": "Access the RStudio API (if available) and provide informative error\n    messages when it's not.",
-        "Version": "0.18.0",
-        "Authors@R": "c(\n    person(\"Kevin\", \"Ushey\", role = c(\"aut\", \"cre\"), email = \"kevin@rstudio.com\"),\n    person(\"JJ\", \"Allaire\", role = c(\"aut\"), email = \"jj@posit.co\"),\n    person(\"Hadley\", \"Wickham\", role = c(\"aut\"), email = \"hadley@posit.co\"),\n    person(\"Gary\", \"Ritchie\", role = c(\"aut\"), email = \"gary@posit.co\"),\n    person(family = \"RStudio\", role = \"cph\")\n    )",
-        "Maintainer": "Kevin Ushey <kevin@rstudio.com>",
-        "License": "MIT + file LICENSE",
-        "URL": "https://rstudio.github.io/rstudioapi/,\nhttps://github.com/rstudio/rstudioapi",
-        "BugReports": "https://github.com/rstudio/rstudioapi/issues",
-        "RoxygenNote": "7.3.3",
-        "Suggests": "testthat, knitr, rmarkdown, clipr, covr, curl, jsonlite,\nwithr",
-        "VignetteBuilder": "knitr",
-        "Encoding": "UTF-8",
-        "NeedsCompilation": "no",
-        "Packaged": "2026-01-15 18:05:24 UTC; kevin",
-        "Author": "Kevin Ushey [aut, cre],\n  JJ Allaire [aut],\n  Hadley Wickham [aut],\n  Gary Ritchie [aut],\n  RStudio [cph]",
-        "Repository": "CRAN",
-        "Date/Publication": "2026-01-16 09:10:02 UTC",
-        "Built": "R 4.6.0; ; 2026-06-02 01:42:16 UTC; windows"
       }
     },
     "s2": {
@@ -2698,32 +2323,6 @@
         "Built": "R 4.6.1; ; 2026-08-19 14:00:59 UTC; windows"
       }
     },
-    "snowflakeauth": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "snowflakeauth",
-        "Title": "Authentication Helpers for 'Snowflake'",
-        "Version": "0.3.0",
-        "Authors@R": "c(\n    person(\"Aaron\", \"Jacobs\", , \"aaron.jacobs@posit.co\", role = c(\"aut\")),\n    person(\"E. David\", \"Aja\", , \"david@posit.co\", role = c(\"aut\", \"cre\")),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
-        "Description": "Authentication helpers for 'Snowflake'.\n    It provides compatibility with authentication approaches supported\n    by the 'Snowflake Connector for Python' <https://pypi.org/project/snowflake-connector-python>\n    and the 'Snowflake CLI' <https://pypi.org/project/snowflake-cli>.",
-        "License": "MIT + file LICENSE",
-        "Encoding": "UTF-8",
-        "Imports": "cli, curl, jsonlite, RcppTOML, rlang, jose, openssl",
-        "Suggests": "httpuv, keyring, testthat (>= 3.0.0), withr",
-        "RoxygenNote": "7.3.2",
-        "Config/testthat/edition": "3",
-        "URL": "https://posit-dev.github.io/snowflakeauth/,\nhttps://github.com/posit-dev/snowflakeauth",
-        "BugReports": "https://github.com/posit-dev/snowflakeauth/issues",
-        "NeedsCompilation": "no",
-        "Packaged": "2026-08-31 15:34:48 UTC; edavidaja",
-        "Author": "Aaron Jacobs [aut],\n  E. David Aja [aut, cre],\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "E. David Aja <david@posit.co>",
-        "Repository": "CRAN",
-        "Date/Publication": "2026-08-31 22:00:02 UTC",
-        "Built": "R 4.6.1; ; 2026-09-02 03:54:47 UTC; windows"
-      }
-    },
     "sourcetools": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -2846,7 +2445,7 @@
         "Package": "terra",
         "Type": "Package",
         "Title": "Spatial Data Analysis",
-        "Version": "1.9-34",
+        "Version": "1.9-27",
         "Date": "2026-06-18",
         "Depends": "R (>= 3.5.0), methods",
         "Suggests": "parallel, tinytest, ncdf4, sf (>= 0.9-8), igraph, deldir,\nXML, leaflet (>= 2.2.1), htmlwidgets, future, future.apply",
@@ -3029,36 +2628,6 @@
         "Built": "R 4.6.0; ; 2026-06-02 01:42:17 UTC; windows"
       }
     },
-    "tzdb": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "tzdb",
-        "Title": "Time Zone Database Information",
-        "Version": "0.5.0",
-        "Authors@R": "c(\n    person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = c(\"aut\", \"cre\")),\n    person(\"Howard\", \"Hinnant\", role = \"cph\",\n           comment = \"Author of the included date library\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
-        "Description": "Provides an up-to-date copy of the Internet Assigned Numbers\n    Authority (IANA) Time Zone Database. It is updated periodically to\n    reflect changes made by political bodies to time zone boundaries, UTC\n    offsets, and daylight saving time rules. Additionally, this package\n    provides a C++ interface for working with the 'date' library. 'date'\n    provides comprehensive support for working with dates and date-times,\n    which this package exposes to make it easier for other R packages to\n    utilize. Headers are provided for calendar specific calculations,\n    along with a limited interface for time zone manipulations.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://tzdb.r-lib.org, https://github.com/r-lib/tzdb",
-        "BugReports": "https://github.com/r-lib/tzdb/issues",
-        "Depends": "R (>= 4.0.0)",
-        "Suggests": "covr, testthat (>= 3.0.0)",
-        "LinkingTo": "cpp11 (>= 0.5.2)",
-        "Biarch": "yes",
-        "Config/Needs/website": "tidyverse/tidytemplate",
-        "Config/testthat/edition": "3",
-        "Encoding": "UTF-8",
-        "RoxygenNote": "7.3.2",
-        "NeedsCompilation": "yes",
-        "Packaged": "2025-03-14 18:41:13 UTC; davis",
-        "Author": "Davis Vaughan [aut, cre],\n  Howard Hinnant [cph] (Author of the included date library),\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Davis Vaughan <davis@posit.co>",
-        "Repository": "CRAN",
-        "Date/Publication": "2025-03-15 22:50:02 UTC",
-        "Built": "R 4.6.0; x86_64-w64-mingw32; 2026-06-02 02:38:59 UTC; windows",
-        "Archs": "x64"
-      }
-    },
     "units": {
       "Source": "CRAN",
       "Repository": "https://cloud.r-project.org",
@@ -3177,42 +2746,6 @@
         "Repository": "CRAN",
         "Date/Publication": "2026-02-04 06:40:10 UTC",
         "Built": "R 4.6.1; ; 2026-08-19 11:46:07 UTC; windows"
-      }
-    },
-    "vroom": {
-      "Source": "CRAN",
-      "Repository": "https://cloud.r-project.org",
-      "description": {
-        "Package": "vroom",
-        "Title": "Read and Write Rectangular Text Data Quickly",
-        "Version": "1.7.1",
-        "Authors@R": "c(\n    person(\"Jim\", \"Hester\", role = \"aut\",\n           comment = c(ORCID = \"0000-0002-2739-7082\")),\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\",\n           comment = c(ORCID = \"0000-0003-4757-117X\")),\n    person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0002-6983-2759\")),\n    person(\"Shelby\", \"Bearrows\", role = \"ctb\"),\n    person(\"https://github.com/mandreyel/\", role = \"cph\",\n           comment = \"mio library\"),\n    person(\"Jukka\", \"Jylänki\", role = \"cph\",\n           comment = \"grisu3 implementation\"),\n    person(\"Mikkel\", \"Jørgensen\", role = \"cph\",\n           comment = \"grisu3 implementation\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\"))\n  )",
-        "Description": "The goal of 'vroom' is to read and write data (like 'csv',\n    'tsv' and 'fwf') quickly. When reading it uses a quick initial\n    indexing step, then reads the values lazily , so only the data you\n    actually use needs to be read.  The writer formats the data in\n    parallel and writes to disk asynchronously from formatting.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://vroom.tidyverse.org, https://github.com/tidyverse/vroom",
-        "BugReports": "https://github.com/tidyverse/vroom/issues",
-        "Depends": "R (>= 4.1)",
-        "Imports": "bit64, cli (>= 3.2.0), crayon, glue, hms, lifecycle (>=\n1.0.3), methods, rlang (>= 1.1.0), stats, tibble (>= 2.0.0),\ntidyselect, tzdb (>= 0.1.1), vctrs (>= 0.2.0), withr",
-        "Suggests": "archive, bench (>= 1.1.0), covr, curl, dplyr, forcats, fs,\nggplot2, knitr, patchwork, prettyunits, purrr, rmarkdown,\nrstudioapi, scales, spelling, testthat (>= 2.1.0), tidyr,\nutils, waldo, xml2",
-        "LinkingTo": "cpp11 (>= 0.2.0), progress (>= 1.2.3), tzdb (>= 0.1.1)",
-        "VignetteBuilder": "knitr",
-        "Config/Needs/website": "nycflights13, tidyverse/tidytemplate",
-        "Config/testthat/edition": "3",
-        "Config/testthat/parallel": "false",
-        "Config/usethis/last-upkeep": "2025-11-25",
-        "Copyright": "file COPYRIGHTS",
-        "Encoding": "UTF-8",
-        "Language": "en-US",
-        "RoxygenNote": "7.3.3",
-        "Config/build/compilation-database": "true",
-        "NeedsCompilation": "yes",
-        "Packaged": "2026-03-30 20:25:37 UTC; jenny",
-        "Author": "Jim Hester [aut] (ORCID: <https://orcid.org/0000-0002-2739-7082>),\n  Hadley Wickham [aut] (ORCID: <https://orcid.org/0000-0003-4757-117X>),\n  Jennifer Bryan [aut, cre] (ORCID:\n    <https://orcid.org/0000-0002-6983-2759>),\n  Shelby Bearrows [ctb],\n  https://github.com/mandreyel/ [cph] (mio library),\n  Jukka Jylänki [cph] (grisu3 implementation),\n  Mikkel Jørgensen [cph] (grisu3 implementation),\n  Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
-        "Maintainer": "Jennifer Bryan <jenny@posit.co>",
-        "Repository": "CRAN",
-        "Date/Publication": "2026-03-31 05:10:02 UTC",
-        "Built": "R 4.6.0; x86_64-w64-mingw32; 2026-06-02 03:56:59 UTC; windows",
-        "Archs": "x64"
       }
     },
     "withr": {
@@ -3358,488 +2891,14 @@
     }
   },
   "files": {
-    ".Renviron": {
-      "checksum": "147a245e94a49bafa0d81d47781e5412"
-    },
     "app.R": {
       "checksum": "490431c4580ece17dd953b1d208d4929"
-    },
-    "BITACORA_OPTIMIZACION_SHINY.md": {
-      "checksum": "ea9407833d61e41cfa8b2abedd4e4932"
     },
     "DESCRIPTION": {
       "checksum": "0bcccbcfb2f5f09e87a8962aecae60d5"
     },
-    "desplegar_shinyapps.ps1": {
-      "checksum": "695d173e3b84b92b780b38dc850a18f8"
-    },
-    "desplegar_shinyapps.R": {
-      "checksum": "d24bab375f2de9ff298582de08f8c47f"
-    },
     "logo_anta.jpg": {
       "checksum": "11b332a6fa5f3e78abf4b5d212fcba3a"
-    },
-    "METODOLOGIA_BIODIVERSIDAD.md": {
-      "checksum": "087adc2c89a8d2f9b7622e40942aea66"
-    },
-    "outputs/analisis_biodiversidad/assets/bezier-mode-1.1.0/bezier-mode.js": {
-      "checksum": "4d16a15569d3456d736bf114bfc22020"
-    },
-    "outputs/analisis_biodiversidad/assets/freehand-mode-1.0.0/freehand-mode.js": {
-      "checksum": "73abc28ce177bf9f3a4c8f988307d32e"
-    },
-    "outputs/analisis_biodiversidad/assets/h3j-h3t-0.9.7/h3j_h3t.js": {
-      "checksum": "0671777adcb7eb0192e68874c092ca4e"
-    },
-    "outputs/analisis_biodiversidad/assets/html2canvas-1.4.1/html2canvas.min.js": {
-      "checksum": "d7530aa0b7587e627484c49fdf8f13f2"
-    },
-    "outputs/analisis_biodiversidad/assets/htmlwidgets-1.6.4/htmlwidgets.js": {
-      "checksum": "237f59bc086ccf24f39be55311023b91"
-    },
-    "outputs/analisis_biodiversidad/assets/layers-control-1.0.0/filter-control.css": {
-      "checksum": "f9bb115d66d4e84c3f264eeaa3e66bdd"
-    },
-    "outputs/analisis_biodiversidad/assets/layers-control-1.0.0/layers-control.css": {
-      "checksum": "6fdd67f593b9859b87c4e329814110e2"
-    },
-    "outputs/analisis_biodiversidad/assets/layers-control-1.0.0/slider-control.css": {
-      "checksum": "866d5ab5f6605ecd1a0d58b2d1663d2c"
-    },
-    "outputs/analisis_biodiversidad/assets/legend-interactivity-1.0.0/legend-interactivity.css": {
-      "checksum": "d86ea6f96825b822883568214de09060"
-    },
-    "outputs/analisis_biodiversidad/assets/legend-interactivity-1.0.0/legend-interactivity.js": {
-      "checksum": "35961a8bd8058051441271bf20cc0bed"
-    },
-    "outputs/analisis_biodiversidad/assets/mapbox-gl-draw-1.5.1/mapbox-gl-draw.css": {
-      "checksum": "0d64590f44b7735f22400c4d73ec49f1"
-    },
-    "outputs/analisis_biodiversidad/assets/mapbox-gl-draw-1.5.1/mapbox-gl-draw.js": {
-      "checksum": "1044205386f88a5c13644cfdfb38fb8f"
-    },
-    "outputs/analisis_biodiversidad/assets/mapbox-gl-globe-minimap-1.2.1/bundle.js": {
-      "checksum": "0fbf0c5747c8d5208f975ad0ae93a2dc"
-    },
-    "outputs/analisis_biodiversidad/assets/mapgl-slider-1.0.0/slider.js": {
-      "checksum": "5854a582a95e1c9b93766ee46ddb3f96"
-    },
-    "outputs/analisis_biodiversidad/assets/mapgl-slider-css-1.0.0/filter-control.css": {
-      "checksum": "f9bb115d66d4e84c3f264eeaa3e66bdd"
-    },
-    "outputs/analisis_biodiversidad/assets/mapgl-slider-css-1.0.0/layers-control.css": {
-      "checksum": "6fdd67f593b9859b87c4e329814110e2"
-    },
-    "outputs/analisis_biodiversidad/assets/mapgl-slider-css-1.0.0/slider-control.css": {
-      "checksum": "866d5ab5f6605ecd1a0d58b2d1663d2c"
-    },
-    "outputs/analisis_biodiversidad/assets/maplibre-gl-5.24.0/LICENSE.txt": {
-      "checksum": "c73ffe791f71e9dbcf26aeff3d6269ac"
-    },
-    "outputs/analisis_biodiversidad/assets/maplibre-gl-5.24.0/maplibre-gl.css": {
-      "checksum": "9ec5b4801e005a61a8a2ebbfa352272f"
-    },
-    "outputs/analisis_biodiversidad/assets/maplibre-gl-5.24.0/maplibre-gl.js": {
-      "checksum": "417d85083d6b84b9b61e59d58a9a7774"
-    },
-    "outputs/analisis_biodiversidad/assets/maplibre-gl-geocoder-1.5.0/maplibre-gl-geocoder.css": {
-      "checksum": "f57cb7be429ebc60096c666e54117126"
-    },
-    "outputs/analisis_biodiversidad/assets/maplibre-gl-geocoder-1.5.0/maplibre-gl-geocoder.min.js": {
-      "checksum": "49169cfe21451dcac6aa800ef8592c62"
-    },
-    "outputs/analisis_biodiversidad/assets/maplibregl-binding-0.5.0/maplibregl.js": {
-      "checksum": "ba8609d7760db39b5ab404aeabb11742"
-    },
-    "outputs/analisis_biodiversidad/assets/maptiler-geocoding-control-2.1.7/LICENSE.txt": {
-      "checksum": "011a94d59e846a5650bc1f39b2b51954"
-    },
-    "outputs/analisis_biodiversidad/assets/maptiler-geocoding-control-2.1.7/maplibregl.umd.js": {
-      "checksum": "9fdf9a4c8e976bc88999643b3b0038eb"
-    },
-    "outputs/analisis_biodiversidad/assets/maptiler-geocoding-control-2.1.7/style.css": {
-      "checksum": "01a0e82e7ddc04e1caf8f3b94a1ea52a"
-    },
-    "outputs/analisis_biodiversidad/assets/pmtiles-4.4.0/pmtiles.js": {
-      "checksum": "ba7e612c77c4273820082a7e08cfce77"
-    },
-    "outputs/analisis_biodiversidad/assets/radius-mode-1.0.0/radius-mode.js": {
-      "checksum": "29071ae88c87a5ba06bc8b79ff47c388"
-    },
-    "outputs/analisis_biodiversidad/assets/rectangle-mode-1.0.0/rectangle-mode.js": {
-      "checksum": "2f52bb54c64a940355b1e88f168da570"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/flowmap.css": {
-      "checksum": "8771bd677fa6d249ee8dbfc1f60e20f8"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/flowmap.js": {
-      "checksum": "c7d3bfa31b7c48272ce0fb2bacd4ea8f"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/bezier-mode/bezier-mode.js": {
-      "checksum": "4d16a15569d3456d736bf114bfc22020"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/d3/d3.min.js": {
-      "checksum": "69faba9d2fffc70c04f5620e7076efb0"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/flowmap-gl/flowmap-gl-bundle.min.js": {
-      "checksum": "d36e31a7a0735f466799e7a5a2113908"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/flowmap-gl/flowmap-gl-vendor-manifest.json": {
-      "checksum": "b32139bc2680f7184eb041ba09d33562"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/freehand-mode/freehand-mode.js": {
-      "checksum": "73abc28ce177bf9f3a4c8f988307d32e"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/h3j-h3t/h3j_h3t.js": {
-      "checksum": "0671777adcb7eb0192e68874c092ca4e"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/html2canvas/html2canvas.min.js": {
-      "checksum": "d7530aa0b7587e627484c49fdf8f13f2"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/legend-interactivity/legend-interactivity.css": {
-      "checksum": "d86ea6f96825b822883568214de09060"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/legend-interactivity/legend-interactivity.js": {
-      "checksum": "35961a8bd8058051441271bf20cc0bed"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/mapbox-gl-draw/mapbox-gl-draw.css": {
-      "checksum": "0d64590f44b7735f22400c4d73ec49f1"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/mapbox-gl-draw/mapbox-gl-draw.js": {
-      "checksum": "1044205386f88a5c13644cfdfb38fb8f"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/mapbox-gl-globe-minimap/bundle.js": {
-      "checksum": "0fbf0c5747c8d5208f975ad0ae93a2dc"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/mapbox-pmtiles/pmtiles-source-optimized-v2.js": {
-      "checksum": "9c43b9a82ec003506785dd94bae271a9"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/mapbox-pmtiles/pmtiles-source.js": {
-      "checksum": "2a7a1c9d9af68931836d05b686911ded"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/maplibre-gl-compare/maplibre-gl-compare.css": {
-      "checksum": "ce90136002267a9e8dd8b2d07b12b8e7"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/maplibre-gl-compare/maplibre-gl-compare.js": {
-      "checksum": "f640d81a8bd6bad9643cc2ef496bb187"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/maplibre-gl-geocoder/maplibre-gl-geocoder.css": {
-      "checksum": "f57cb7be429ebc60096c666e54117126"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/maplibre-gl-geocoder/maplibre-gl-geocoder.min.js": {
-      "checksum": "49169cfe21451dcac6aa800ef8592c62"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/maplibre-gl/LICENSE.txt": {
-      "checksum": "c73ffe791f71e9dbcf26aeff3d6269ac"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/maplibre-gl/maplibre-gl.css": {
-      "checksum": "9ec5b4801e005a61a8a2ebbfa352272f"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/maplibre-gl/maplibre-gl.js": {
-      "checksum": "417d85083d6b84b9b61e59d58a9a7774"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/maptiler-geocoding-control/LICENSE.txt": {
-      "checksum": "011a94d59e846a5650bc1f39b2b51954"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/maptiler-geocoding-control/maplibregl.umd.js": {
-      "checksum": "9fdf9a4c8e976bc88999643b3b0038eb"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/maptiler-geocoding-control/style.css": {
-      "checksum": "01a0e82e7ddc04e1caf8f3b94a1ea52a"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/pmtiles/pmtiles.js": {
-      "checksum": "ba7e612c77c4273820082a7e08cfce77"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/radius-mode/radius-mode.js": {
-      "checksum": "29071ae88c87a5ba06bc8b79ff47c388"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/rectangle-mode/rectangle-mode.js": {
-      "checksum": "2f52bb54c64a940355b1e88f168da570"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/slider/slider.js": {
-      "checksum": "5854a582a95e1c9b93766ee46ddb3f96"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/lib/turf/turf.min.js": {
-      "checksum": "81f987238ddfca2907ccaecb0d2ec3a7"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/mapboxgl.js": {
-      "checksum": "d98a8baeef2060195600aef260928325"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/mapboxgl.yaml": {
-      "checksum": "ae54c8a45c2a964685f77aaaaebd82b6"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/mapboxgl_compare.js": {
-      "checksum": "74b59eb04259b8319e2c20798dbeae94"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/mapboxgl_compare.yaml": {
-      "checksum": "c485a2b4ca0dc7f3a95d5f47cf382b77"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/maplibregl.js": {
-      "checksum": "ba8609d7760db39b5ab404aeabb11742"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/maplibregl.yaml": {
-      "checksum": "ef0fa079f0bb6dc973b44f94ce4296c9"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/maplibregl_compare.js": {
-      "checksum": "893fa3181a5ac94945ce909771bf6fc2"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/maplibregl_compare.yaml": {
-      "checksum": "c37c6f37f6f2e2baa9bcff530f3bc0bd"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/screenshot.js": {
-      "checksum": "7a60484d6a088845758df9a39d7ce16a"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/styles/filter-control.css": {
-      "checksum": "f9bb115d66d4e84c3f264eeaa3e66bdd"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/styles/layers-control.css": {
-      "checksum": "6fdd67f593b9859b87c4e329814110e2"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/styles/slider-control.css": {
-      "checksum": "866d5ab5f6605ecd1a0d58b2d1663d2c"
-    },
-    "outputs/analisis_biodiversidad/assets/screenshot-1.0.0/turf-operations.js": {
-      "checksum": "9dcb51b1d34872c3204657b9584504e9"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-7.3.0/turf.min.js": {
-      "checksum": "81f987238ddfca2907ccaecb0d2ec3a7"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/flowmap.css": {
-      "checksum": "8771bd677fa6d249ee8dbfc1f60e20f8"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/flowmap.js": {
-      "checksum": "c7d3bfa31b7c48272ce0fb2bacd4ea8f"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/bezier-mode/bezier-mode.js": {
-      "checksum": "4d16a15569d3456d736bf114bfc22020"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/d3/d3.min.js": {
-      "checksum": "69faba9d2fffc70c04f5620e7076efb0"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/flowmap-gl/flowmap-gl-bundle.min.js": {
-      "checksum": "d36e31a7a0735f466799e7a5a2113908"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/flowmap-gl/flowmap-gl-vendor-manifest.json": {
-      "checksum": "b32139bc2680f7184eb041ba09d33562"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/freehand-mode/freehand-mode.js": {
-      "checksum": "73abc28ce177bf9f3a4c8f988307d32e"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/h3j-h3t/h3j_h3t.js": {
-      "checksum": "0671777adcb7eb0192e68874c092ca4e"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/html2canvas/html2canvas.min.js": {
-      "checksum": "d7530aa0b7587e627484c49fdf8f13f2"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/legend-interactivity/legend-interactivity.css": {
-      "checksum": "d86ea6f96825b822883568214de09060"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/legend-interactivity/legend-interactivity.js": {
-      "checksum": "35961a8bd8058051441271bf20cc0bed"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/mapbox-gl-draw/mapbox-gl-draw.css": {
-      "checksum": "0d64590f44b7735f22400c4d73ec49f1"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/mapbox-gl-draw/mapbox-gl-draw.js": {
-      "checksum": "1044205386f88a5c13644cfdfb38fb8f"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/mapbox-gl-globe-minimap/bundle.js": {
-      "checksum": "0fbf0c5747c8d5208f975ad0ae93a2dc"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/mapbox-pmtiles/pmtiles-source-optimized-v2.js": {
-      "checksum": "9c43b9a82ec003506785dd94bae271a9"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/mapbox-pmtiles/pmtiles-source.js": {
-      "checksum": "2a7a1c9d9af68931836d05b686911ded"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/maplibre-gl-compare/maplibre-gl-compare.css": {
-      "checksum": "ce90136002267a9e8dd8b2d07b12b8e7"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/maplibre-gl-compare/maplibre-gl-compare.js": {
-      "checksum": "f640d81a8bd6bad9643cc2ef496bb187"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/maplibre-gl-geocoder/maplibre-gl-geocoder.css": {
-      "checksum": "f57cb7be429ebc60096c666e54117126"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/maplibre-gl-geocoder/maplibre-gl-geocoder.min.js": {
-      "checksum": "49169cfe21451dcac6aa800ef8592c62"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/maplibre-gl/LICENSE.txt": {
-      "checksum": "c73ffe791f71e9dbcf26aeff3d6269ac"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/maplibre-gl/maplibre-gl.css": {
-      "checksum": "9ec5b4801e005a61a8a2ebbfa352272f"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/maplibre-gl/maplibre-gl.js": {
-      "checksum": "417d85083d6b84b9b61e59d58a9a7774"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/maptiler-geocoding-control/LICENSE.txt": {
-      "checksum": "011a94d59e846a5650bc1f39b2b51954"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/maptiler-geocoding-control/maplibregl.umd.js": {
-      "checksum": "9fdf9a4c8e976bc88999643b3b0038eb"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/maptiler-geocoding-control/style.css": {
-      "checksum": "01a0e82e7ddc04e1caf8f3b94a1ea52a"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/pmtiles/pmtiles.js": {
-      "checksum": "ba7e612c77c4273820082a7e08cfce77"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/radius-mode/radius-mode.js": {
-      "checksum": "29071ae88c87a5ba06bc8b79ff47c388"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/rectangle-mode/rectangle-mode.js": {
-      "checksum": "2f52bb54c64a940355b1e88f168da570"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/slider/slider.js": {
-      "checksum": "5854a582a95e1c9b93766ee46ddb3f96"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/lib/turf/turf.min.js": {
-      "checksum": "81f987238ddfca2907ccaecb0d2ec3a7"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/mapboxgl.js": {
-      "checksum": "d98a8baeef2060195600aef260928325"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/mapboxgl.yaml": {
-      "checksum": "ae54c8a45c2a964685f77aaaaebd82b6"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/mapboxgl_compare.js": {
-      "checksum": "74b59eb04259b8319e2c20798dbeae94"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/mapboxgl_compare.yaml": {
-      "checksum": "c485a2b4ca0dc7f3a95d5f47cf382b77"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/maplibregl.js": {
-      "checksum": "ba8609d7760db39b5ab404aeabb11742"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/maplibregl.yaml": {
-      "checksum": "ef0fa079f0bb6dc973b44f94ce4296c9"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/maplibregl_compare.js": {
-      "checksum": "893fa3181a5ac94945ce909771bf6fc2"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/maplibregl_compare.yaml": {
-      "checksum": "c37c6f37f6f2e2baa9bcff530f3bc0bd"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/screenshot.js": {
-      "checksum": "7a60484d6a088845758df9a39d7ce16a"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/styles/filter-control.css": {
-      "checksum": "f9bb115d66d4e84c3f264eeaa3e66bdd"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/styles/layers-control.css": {
-      "checksum": "6fdd67f593b9859b87c4e329814110e2"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/styles/slider-control.css": {
-      "checksum": "866d5ab5f6605ecd1a0d58b2d1663d2c"
-    },
-    "outputs/analisis_biodiversidad/assets/turf-operations-1.0.0/turf-operations.js": {
-      "checksum": "9dcb51b1d34872c3204657b9584504e9"
-    },
-    "outputs/analisis_biodiversidad/biodiversidad_distritos.geojson": {
-      "checksum": "f9e7330663083a10ce5eba69bbe2b6b0"
-    },
-    "outputs/analisis_biodiversidad/cobertura_cuadricula_5km.csv": {
-      "checksum": "2558f569559ff8526196a4044d3b4053"
-    },
-    "outputs/analisis_biodiversidad/cobertura_cuadricula_5km.geojson": {
-      "checksum": "9f8f4ac5c9d9dbecef0206225d1d71a7"
-    },
-    "outputs/analisis_biodiversidad/ebird_especies_consolidadas.csv": {
-      "checksum": "5a80f22ec06b06ac98e66cc94b9b03c7"
-    },
-    "outputs/analisis_biodiversidad/ebird_especies_consolidadas.rds": {
-      "checksum": "cade31e76e592dab9dd5cd3e6a9cfb9b"
-    },
-    "outputs/analisis_biodiversidad/ebird_hotspots_anta.geojson": {
-      "checksum": "45c67b13f13c528b6bbf4aec13825d3f"
-    },
-    "outputs/analisis_biodiversidad/ebird_hotspots_resumen.csv": {
-      "checksum": "a3548057d143a9c5ca9c40babfc3c6f2"
-    },
-    "outputs/analisis_biodiversidad/ebird_hotspots_resumen.rds": {
-      "checksum": "ee8c2018fd225370f974f73ce46da9af"
-    },
-    "outputs/analisis_biodiversidad/especies_por_distrito.csv": {
-      "checksum": "68b13ab66044d9770ceb00bb35c21a39"
-    },
-    "outputs/analisis_biodiversidad/especies_por_distrito.rds": {
-      "checksum": "667d41711049caf721d277b8dbb45ab0"
-    },
-    "outputs/analisis_biodiversidad/index.html": {
-      "checksum": "ea0c9293ea59d0587fc7f0999111643e"
-    },
-    "outputs/analisis_biodiversidad/ocurrencias_mapa_sf.rds": {
-      "checksum": "0a2ffe5b5d3b536d5c973a61205e350d"
-    },
-    "outputs/analisis_biodiversidad/ocurrencias_puntos_sf.rds": {
-      "checksum": "a092a85c5e5983fce776380a9fd3fec8"
-    },
-    "outputs/analisis_biodiversidad/recambio_jaccard_distritos.csv": {
-      "checksum": "81a2c688e34d90dbd07c8bfb75cbf50d"
-    },
-    "outputs/analisis_biodiversidad/resumen_distritos.csv": {
-      "checksum": "d83198a1cd2e206dd471e264254defb0"
-    },
-    "outputs/analisis_biodiversidad/resumen_homologacion.csv": {
-      "checksum": "3da8e66a8443289f4dd55ba0eae4826e"
-    },
-    "outputs/analisis_biodiversidad/singularidad_distritos.csv": {
-      "checksum": "ee6e0606fdd7d9d6d1ab7680e1f5798a"
-    },
-    "outputs/informe_biodiversidad_pdm.html": {
-      "checksum": "28e8f378b18259bcf6662ae1865d5f2b"
-    },
-    "outputs/informe_biodiversidad_pdm.qmd": {
-      "checksum": "7a597cce5abc88c13781b53a9dae8c55"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta.docx": {
-      "checksum": "e1d2cb4b1566a555ecdaacf916186b0f"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta.html": {
-      "checksum": "75befb1b67765fbe661ebc804d34d1ea"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta.qmd": {
-      "checksum": "1ee6245c99c778c2f6a8e2d02c32afb1"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/bootstrap/bootstrap-67270d1595a62d14f123c043d4fb2f18.min.css": {
-      "checksum": "67270d1595a62d14f123c043d4fb2f18"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/bootstrap/bootstrap-icons.css": {
-      "checksum": "886da841d7421705f715f600c5ff11bb"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/bootstrap/bootstrap-icons.woff": {
-      "checksum": "efe54401ef52214fd3b701e23ff88c5f"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/bootstrap/bootstrap.min.js": {
-      "checksum": "e2b09c06f0e714b6144a6788a28e3950"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/clipboard/clipboard.min.js": {
-      "checksum": "15f52a1ee547f2bdd46e56747332ca2d"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/quarto-html/anchor.min.js": {
-      "checksum": "91bcf6cd1fd88fec3f109811e5fc3546"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/quarto-html/popper.min.js": {
-      "checksum": "3a4a291ccf3f1ea0f82b641542fd3827"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css": {
-      "checksum": "7f8f88aac4f3542376d5c11b86a4c14d"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/quarto-html/quarto.js": {
-      "checksum": "6f4245742deb3cc92337dbe2701ccfe1"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/quarto-html/tabsets/tabsets.js": {
-      "checksum": "e8d6a8862b33ccc461f8fd532e05b365"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/quarto-html/tippy.css": {
-      "checksum": "ebd6f8ce46a677e1a4f5f8a8317109a9"
-    },
-    "outputs/informe_tecnico_sistema_biodiversidad_anta_files/libs/quarto-html/tippy.umd.min.js": {
-      "checksum": "d828775275749701b48bd9d958814111"
-    },
-    "outputs/LIMITES PROVINCIAL DISTRITAL ANTA-20260821T042823Z-1-001.zip": {
-      "checksum": "2d8cfa652bc865ec4a5b85d432a8f052"
     },
     "R/mod_delimitacion_poligono.R": {
       "checksum": "c6cf511f946e838531f7da184d0b1aa3"
@@ -3881,5 +2940,5 @@
       "checksum": "7914d5a167510426992a503b204338dc"
     }
   },
-  "users": null
+  "users": {}
 }
