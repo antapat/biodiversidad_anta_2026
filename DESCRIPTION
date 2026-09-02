@@ -5,7 +5,7 @@ Version: 1.0.0
 Authors@R: c(
     person(given = "Paul Efren", family = "Santos Andrade", role = c("aut", "cre"), 
            email = "coordinacion.pat.anta@gmail.com", 
-           comment = c(Cargo = "Especialista SIG y Modelamiento Territorial - Equipo Tecnico PAT Anta")),
+           comment = c(Cargo = "Especialista Ambiental - Equipo Tecnico PAT Anta")),
     person(given = "Municipalidad Provincial de Anta", role = "cph", 
            comment = "Gerencia de Desarrollo Urbano y Rural (GDUR)")
   )
