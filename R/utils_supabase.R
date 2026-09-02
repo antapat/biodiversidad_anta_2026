@@ -3,11 +3,10 @@
 # Municipalidad Provincial de Anta - Gerencia de Desarrollo Urbano y Rural (GDUR)
 # ==============================================================================
 
-suppressPackageStartupMessages({
-  library(DBI)
-  library(RPostgres)
-  library(sf)
-})
+# Carga opcional y segura de dependencias de base de datos
+if (requireNamespace("DBI", quietly = TRUE)) suppressPackageStartupMessages(library(DBI))
+if (requireNamespace("RPostgres", quietly = TRUE)) suppressPackageStartupMessages(library(RPostgres))
+if (requireNamespace("sf", quietly = TRUE)) suppressPackageStartupMessages(library(sf))
 
 # Gestión de conexión singleton / pool a Supabase
 supabase_env <- new.env(parent = emptyenv())

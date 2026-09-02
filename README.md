@@ -47,7 +47,6 @@ SUPABASE_PORT=5432
 SUPABASE_DB="postgres"
 SUPABASE_USER="postgres.<project-ref>"
 SUPABASE_PASSWORD="<database-password>"
-iucn_key="<iucn-api-key>"
 ```
 
 ### Ejecutar Localmente
