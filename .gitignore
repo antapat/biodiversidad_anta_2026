@@ -19,9 +19,6 @@ scratch/
 *.log
 *.jpg.backup
 
-# Archivos de datos crudos locales pesados
+# Archivos de datos locales y outputs (Servidos exclusivamente desde Supabase)
 data/
-outputs/*
-!outputs/analisis_biodiversidad/
-outputs/analisis_biodiversidad/index.html
-outputs/analisis_biodiversidad/assets/
+outputs/
