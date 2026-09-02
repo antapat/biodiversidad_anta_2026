@@ -18,10 +18,7 @@ temp/
 scratch/
 *.log
 *.jpg.backup
-outputs/analisis_biodiversidad/assets/
 
-# Capas espaciales crudas locales pesadas (>100MB, ahora en Supabase)
-data/spatial/*.dbf
-data/spatial/*.gpkg
-data/tabular/ocurrencias_totales_anta_0803.csv
-outputs/analisis_biodiversidad/ocurrencias_puntos_sf.rds
+# Archivos de datos crudos locales y outputs pesados (Ahora servidos desde Supabase)
+data/
+outputs/
