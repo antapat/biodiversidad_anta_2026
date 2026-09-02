@@ -1,0 +1,531 @@
+/* ==========================================================================
+   ESTILOS INSTITUCIONALES - MUNICIPALIDAD PROVINCIAL DE ANTA
+   Gerencia de Desarrollo Urbano y Rural (GDUR)
+   Sistema de Información y Monitoreo de Biodiversidad
+   ========================================================================== */
+
+:root {
+  --primary-color: #0f5132;
+  --primary-dark: #083321;
+  --primary-light: #20c997;
+  --secondary-color: #1e293b;
+  --accent-gold: #d97706;
+  --accent-blue: #0284c7;
+  --accent-emerald: #059669;
+  --accent-red: #dc2626;
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* ── Encabezado Institucional ────────────────────────────────────────── */
+.institutional-header {
+  background: #0f5132;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 2px 8px rgba(8, 51, 33, 0.18);
+}
+
+.header-shell {
+  padding: 0.72rem 2rem;
+}
+
+.header-topline {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.institutional-header .header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.institutional-header .logo-img {
+  height: 50px;
+  width: auto;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 3px;
+  box-shadow: none;
+  transition: transform 0.2s ease;
+}
+
+.institutional-header .logo-img:hover {
+  transform: scale(1.03);
+}
+
+.institution-name {
+  font-size: 1rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 0.025em;
+  color: #ffffff;
+}
+
+.institution-unit {
+  font-size: 0.78rem;
+  font-weight: 500;
+  margin: 0.1rem 0 0;
+  color: #d1fae5;
+}
+
+.header-context {
+  text-align: right;
+  display: grid;
+  justify-items: end;
+  gap: 0.08rem;
+}
+
+.context-location {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ecfdf5;
+}
+
+.context-meta {
+  font-size: 0.72rem;
+  color: #a7f3d0;
+}
+
+.update-badge {
+  margin-top: 0.25rem;
+  padding: 0.14rem 0.48rem;
+  border: 1px solid rgba(209, 250, 229, 0.45);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #ecfdf5;
+}
+
+.header-system {
+  margin: 0;
+  min-width: 0;
+}
+
+.system-kicker {
+  margin: 0;
+  color: #a7f3d0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+
+.header-system h1 {
+  margin: 0.12rem 0 0;
+  font-size: clamp(1.12rem, 1.55vw, 1.5rem);
+  font-weight: 750;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.system-description {
+  margin: 0.22rem 0 0;
+  color: #d1fae5;
+  font-size: 0.82rem;
+}
+
+/* ── Navegación (Pills) ──────────────────────────────────────────────── */
+.app-navigation {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.25rem;
+}
+
+.app-navigation > .container-fluid {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+.nav-pills .nav-link {
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.88rem;
+  border-radius: var(--radius-md);
+  padding: 0.6rem 1.1rem;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-pills .nav-link:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.nav-pills .nav-link.active {
+  background-color: var(--primary-color) !important;
+  color: #ffffff !important;
+  box-shadow: 0 3px 8px rgba(15, 81, 50, 0.3);
+  position: relative;
+}
+
+.nav-pills .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: -0.31rem;
+  height: 3px;
+  background: var(--accent-gold);
+  border-radius: 3px 3px 0 0;
+}
+
+/* ── Tarjetas de Métricas (KPI Cards) ────────────────────────────────── */
+.kpi-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--primary-color);
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.kpi-card.kpi-total { border-top-color: #0f5132; }
+.kpi-card.kpi-flora { border-top-color: #059669; }
+.kpi-card.kpi-fauna { border-top-color: #0284c7; }
+.kpi-card.kpi-threatened { border-top-color: #d97706; }
+.kpi-card.kpi-records { border-top-color: #6366f1; }
+
+.kpi-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.kpi-title {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.kpi-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.kpi-total .kpi-icon { background: #d1fae5; color: #065f46; }
+.kpi-flora .kpi-icon { background: #ecfdf5; color: #059669; }
+.kpi-fauna .kpi-icon { background: #e0f2fe; color: #0284c7; }
+.kpi-threatened .kpi-icon { background: #fef3c7; color: #b45309; }
+.kpi-records .kpi-icon { background: #e0e7ff; color: #4338ca; }
+
+.kpi-value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+}
+
+.kpi-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ── Paneles y Tarjetas de Contenido ─────────────────────────────────── */
+.content-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.content-card-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Banner de Alerta Territorial ────────────────────────────────────── */
+.territorial-alert-banner {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1px solid #fde68a;
+  border-left: 5px solid #d97706;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.territorial-alert-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #92400e;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.territorial-alert-text {
+  font-size: 0.85rem;
+  color: #78350f;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Badges y Etiquetas ──────────────────────────────────────────────── */
+.badge-flora {
+  background-color: #d1fae5;
+  color: #065f46;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+.badge-fauna {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+.badge-exclusiva {
+  background-color: #fef3c7;
+  color: #92400e;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+.badge-pill-freshness {
+  background-color: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+/* ── Mapas y Contenedores ────────────────────────────────────────────── */
+.map-container-wrapper {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* ── Indicador de filtros reactivos ──────────────────────────────────── */
+.reactive-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.reactive-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+/* Flujo de delimitación: Paso 1 → Paso 2 → Limpiar. */
+.toolbar-delimitacion {
+  row-gap: 0.65rem !important;
+}
+
+.paso-dibujo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.55rem;
+  padding: 0.55rem 0.85rem;
+  color: #065f46;
+  background: #d1fae5;
+  border: 1px solid #6ee7b7;
+  border-radius: 0.5rem;
+  font-size: 0.82rem;
+  line-height: 1.2;
+}
+
+.btn-consulta-zona {
+  color: #ffffff !important;
+  min-height: 2.55rem;
+  background: #0f5132 !important;
+  border: 2px solid #064e3b !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 3px 8px rgba(15, 81, 50, 0.25) !important;
+  font-size: 0.82rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.015em;
+}
+
+.btn-consulta-zona:hover,
+.btn-consulta-zona:focus {
+  color: #ffffff !important;
+  background: #166534 !important;
+  border-color: #14532d !important;
+  box-shadow: 0 0 0 0.22rem rgba(34, 197, 94, 0.22) !important;
+  transform: translateY(-1px);
+}
+
+.btn-consulta-zona:active {
+  background: #064e3b !important;
+  transform: translateY(0);
+}
+
+.toolbar-delimitacion .btn-outline-secondary {
+  min-height: 2.55rem;
+  padding-inline: 0.85rem;
+}
+
+@media (max-width: 767.98px) {
+  .toolbar-delimitacion > * {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.institutional-footer {
+  background-color: var(--primary-dark);
+  color: #d1fae5;
+  padding: 1.15rem 0;
+  margin-top: 3rem;
+  border-top: 3px solid var(--primary-color);
+}
+
+.institutional-footer strong {
+  color: #ffffff;
+}
+
+.footer-shell {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+}
+
+.footer-shell p {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.footer-identity p:first-child {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.footer-provenance {
+  text-align: right;
+  color: #a7f3d0;
+}
+
+@media (max-width: 767.98px) {
+  .header-shell {
+    padding: 0.75rem 1rem 0.9rem;
+  }
+
+  .header-topline,
+  .footer-shell {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header-topline {
+    display: flex;
+  }
+
+  .header-context,
+  .footer-provenance {
+    text-align: left;
+    justify-items: start;
+  }
+
+  .header-system {
+    margin-left: 0;
+  }
+
+  .header-system h1 {
+    font-size: 1.2rem;
+  }
+
+  .app-navigation > .container-fluid {
+    overflow-x: auto;
+  }
+
+  .nav-pills {
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+}

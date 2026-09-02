@@ -1,0 +1,16 @@
+Type: Application
+Title: Sistema de Biodiversidad Territorial de Anta
+Description: Aplicación Shiny para consulta y descarga de indicadores de biodiversidad territorial.
+Version: 1.0.0
+Encoding: UTF-8
+Imports:
+    bslib,
+    dplyr,
+    geojsonsf,
+    htmltools,
+    jsonlite,
+    mapgl,
+    plotly,
+    reactable,
+    sf,
+    shiny

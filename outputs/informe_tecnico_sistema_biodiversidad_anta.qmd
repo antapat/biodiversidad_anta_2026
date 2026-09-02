@@ -1,0 +1,133 @@
+---
+title: "INFORME TECNICO N.° ___-2026-MPA-GDUR/___"
+subtitle: "Sistema de Informacion y Monitoreo de Biodiversidad Territorial de la Provincia de Anta"
+author: "Equipo Tecnico Responsable"
+date: "23 de agosto de 2026"
+lang: es
+format:
+  docx:
+    toc: false
+    number-sections: true
+  html:
+    toc: true
+    number-sections: true
+    theme: cosmo
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+| | |
+|:--|:--|
+| **A** | Gerencia de Desarrollo Urbano y Rural - GDUR |
+| **DE** | Equipo Tecnico Responsable del Sistema de Informacion y Monitoreo de Biodiversidad Territorial |
+| **ASUNTO** | Informe tecnico sobre la implementacion y publicacion de la plataforma de biodiversidad territorial de la Provincia de Anta |
+| **REFERENCIA** | Actividades de gestion ambiental, planificacion territorial y fortalecimiento de la informacion para la toma de decisiones de la Municipalidad Provincial de Anta |
+| **FECHA** | Anta, 23 de agosto de 2026 |
+
+Tengo el agrado de dirigirme a usted para informar sobre la implementacion del **Sistema de Informacion y Monitoreo de Biodiversidad Territorial de la Provincia de Anta**, plataforma web desarrollada para organizar, visualizar, analizar y poner a disposicion informacion biologica y territorial de apoyo a la gestion urbana y rural, la planificacion ambiental y la conservacion de la biodiversidad.
+
+## Antecedentes
+
+La Municipalidad Provincial de Anta, a traves de la Gerencia de Desarrollo Urbano y Rural, requiere contar con informacion tecnica integrada que permita reconocer la distribucion de especies, los patrones de riqueza biologica, los vacios de muestreo y las areas de interes para la gestion territorial.
+
+En ese marco, se consolidaron registros procedentes de fuentes especializadas de biodiversidad y monitoreo de aves, complementados con informacion espacial distrital y productos tecnicos generados para el ambito provincial. El procesamiento considera criterios de depuracion, estandarizacion taxonomica, asignacion distrital y consulta de categorias de conservacion ya incorporadas en la base de datos.
+
+Como resultado, se implemento una aplicacion web interactiva que permite consultar indicadores y descargar productos tecnicos sin requerir software SIG especializado por parte de los usuarios institucionales.
+
+## Objeto del informe
+
+El presente informe tiene por objeto describir la arquitectura, los contenidos, las funcionalidades y las condiciones de uso del Sistema de Informacion y Monitoreo de Biodiversidad Territorial, asi como informar sobre su disponibilidad en el servicio de publicacion web institucional.
+
+## Implementacion del sistema
+
+### Alcance funcional
+
+La plataforma se ha estructurado en siete modulos complementarios:
+
+1. **Resumen ejecutivo:** presenta indicadores provinciales de riqueza de especies, composicion de flora y fauna, especies con categorias de amenaza y cobertura de muestreo.
+2. **Explorador distrital:** permite consultar especies, indicadores y categorias de conservacion para cada distrito de la provincia.
+3. **Delimitacion territorial:** permite dibujar un poligono, rectangulo, radio o trazo libre sobre el mapa para identificar los registros y especies contenidas en un area de interes.
+4. **Monitoreo de aves:** integra los hotspots de eBird y el inventario de aves validadas, con indicadores por sitio de monitoreo.
+5. **Visor territorial:** representa los distritos, la cuadricula de cobertura de 5 km y los indicadores espaciales asociados.
+6. **Recambio ecologico:** muestra la matriz de similitud y recambio de especies entre distritos, asi como indicadores de singularidad.
+7. **Metodologia y descargas:** documenta las fuentes, el tratamiento de informacion y habilita la descarga de capas y tablas para uso tecnico.
+
+### Informacion procesada
+
+La version publicada incorpora, entre otros, los siguientes productos:
+
+| Producto | Contenido principal | Uso tecnico |
+|:--|:--|:--|
+| Inventario de especies por distrito | 2,712 registros especie-distrito; 1,494 especies unicas reportadas en el tablero | Analisis de riqueza, presencia distrital y categorias de conservacion |
+| Ocurrencias biologicas | 67,797 registros analiticos homologados de flora y fauna | Consulta por area delimitada y representacion cartografica |
+| Monitoreo de aves | 2,235 registros de aves consolidados y resumen de hotspots | Seguimiento ornitologico y priorizacion de sitios |
+| Distritos y cuadricula territorial | Limites distritales, atributos de biodiversidad y cobertura de 5 km | Planificacion territorial, identificacion de vacios y priorizacion |
+| Recambio y singularidad | Matriz de Jaccard e indicadores comparativos | Identificacion de diferencias biologicas entre distritos |
+
+Los valores indicados corresponden a la base consolidada incluida en la version 2026 de la plataforma y deben actualizarse cuando se incorporen nuevos procesos de validacion o nuevos registros.
+
+### Fuentes de informacion
+
+La plataforma integra registros y referencias procedentes de las siguientes fuentes:
+
+- **GBIF** e **iNaturalist**, como fuentes de ocurrencias biologicas.
+- **eBird / Cornell Lab of Ornithology**, para el monitoreo de aves y hotspots.
+- **UICN**, para las categorias globales de conservacion incorporadas durante el procesamiento de las especies.
+- Informacion espacial y productos tecnicos de la Municipalidad Provincial de Anta, para los limites distritales y el analisis territorial.
+
+Las fuentes se muestran en la aplicacion para fines de trazabilidad. La plataforma no sustituye las bases oficiales de demarcacion territorial, catastro, saneamiento fisico-legal ni los instrumentos normativos vigentes.
+
+### Arquitectura tecnica
+
+El sistema fue desarrollado como una aplicacion **Shiny** en lenguaje R, con componentes de visualizacion cartografica, tablas interactivas y graficos dinamicos. Su arquitectura separa el procesamiento de datos de la consulta web:
+
+- Los procesos de descarga, depuracion, validacion y analisis se ejecutan previamente.
+- Los productos publicados se almacenan en formatos optimizados (`RDS`, `CSV` y `GeoJSON`).
+- Al iniciar cada proceso de la aplicacion, los datos se cargan una sola vez y se comparten entre las sesiones activas, disminuyendo la latencia de consulta.
+- Las descargas tabulares se generan bajo demanda a partir de los datos consolidados en memoria.
+- La consulta por area dibujada emplea filtros espaciales indexados para reducir el tiempo de respuesta durante el analisis de ocurrencias.
+
+La version de despliegue utiliza un paquete reducido de aproximadamente 1.52 MB, compuesto por 23 archivos esenciales. Esta configuracion evita publicar insumos intermedios, librerias locales y archivos redundantes.
+
+## Disponibilidad y acceso
+
+La aplicacion se encuentra publicada en el servicio shinyapps.io y puede consultarse mediante el siguiente enlace:
+
+<https://paulefrensa.shinyapps.io/biodiversidad_anta_2026/>
+
+El acceso esta orientado a la consulta y descarga de informacion por parte de los equipos tecnicos de la Municipalidad Provincial de Anta y demas usuarios autorizados. La continuidad del servicio depende de la disponibilidad de la cuenta de publicacion, de la conectividad a internet y del mantenimiento periodico de las dependencias de software.
+
+## Consideraciones tecnicas y de uso
+
+1. La informacion biologica representa registros disponibles y procesados; no constituye un inventario exhaustivo de todas las especies presentes en la provincia.
+2. Las categorias de conservacion y los nombres taxonomicos deben actualizarse cuando las fuentes oficiales publiquen nuevas evaluaciones o cambios de nomenclatura.
+3. Los resultados obtenidos mediante delimitacion territorial tienen caracter referencial y dependen de la cobertura, precision y fecha de los registros disponibles.
+4. Las capas descargables deben utilizarse con fines de analisis, planificacion y apoyo a decisiones; no reemplazan estudios especificos, levantamientos de campo ni procedimientos administrativos.
+5. Toda actualizacion de datos debe pasar por un proceso de control de calidad, generacion de productos consolidados y verificacion previa a la publicacion.
+
+## Conclusiones
+
+1. Se ha implementado y publicado una plataforma web funcional para la consulta, analisis y descarga de informacion de biodiversidad territorial de la Provincia de Anta.
+2. El sistema integra informacion de ocurrencias biologicas, indicadores distritales, monitoreo de aves, cobertura territorial y recambio ecologico, facilitando su uso por equipos tecnicos no especializados en programacion.
+3. La arquitectura de publicacion optimizada reduce la transferencia de archivos, evita la recarga de datos por usuario y mejora la capacidad de respuesta de la aplicacion.
+4. La plataforma constituye un instrumento de apoyo para la planificacion urbana y rural, la identificacion de vacios de informacion, la priorizacion de acciones de monitoreo y la incorporacion de criterios de biodiversidad en la gestion territorial.
+5. La informacion expuesta mantiene caracter tecnico y referencial; su uso debe complementarse con las validaciones, instrumentos y procedimientos oficiales aplicables a cada intervencion.
+
+## Solicitud
+
+Por lo expuesto, se solicita a la Gerencia de Desarrollo Urbano y Rural tomar conocimiento del presente informe tecnico y disponer las acciones que correspondan para la difusion, uso tecnico y actualizacion progresiva del Sistema de Informacion y Monitoreo de Biodiversidad Territorial de la Provincia de Anta.
+
+Asimismo, se recomienda que las unidades organicas que requieran informacion ambiental o territorial utilicen la plataforma como fuente de consulta preliminar, sin perjuicio de solicitar la validacion tecnica correspondiente cuando la informacion sea empleada en expedientes, proyectos de inversion, instrumentos de planificacion o procedimientos administrativos.
+
+Sin otro particular, es todo cuanto informo para su conocimiento y fines correspondientes.
+
+Atentamente,
+
+<br><br>
+
+**______________________________________________**  
+Equipo Tecnico Responsable  
+Sistema de Informacion y Monitoreo de Biodiversidad Territorial  
+Municipalidad Provincial de Anta

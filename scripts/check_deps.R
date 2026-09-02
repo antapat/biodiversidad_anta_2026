@@ -1,0 +1,5 @@
+.libPaths(c(file.path(getwd(), ".r-library"), .libPaths()))
+library(rsconnect)
+deps <- rsconnect::appDependencies()
+cat("Total dependencies:", nrow(deps), "\n")
+print(deps[grep("terra|stars|raster|gdal", deps$Package, ignore.case = TRUE), ])

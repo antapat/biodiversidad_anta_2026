@@ -1,0 +1,219 @@
+---
+title: "Riqueza taxonómica de la provincia de Anta"
+subtitle: "Análisis de registros de ocurrencia por distrito"
+author: "Equipo de Planificación Territorial y Gestión Ambiental"
+date: "`r Sys.Date()`"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    toc-title: "Contenido"
+    number-sections: true
+    embed-resources: true
+    fig-width: 9
+    fig-height: 5.5
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup, include=FALSE}
+library(sf)
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(DT)
+library(scales)
+
+# Productos finales consolidados para los nueve distritos de Anta.
+path_occ <- "../data/spatial/ocurrencias_homologadas.gpkg"
+path_distritos <- "../data/spatial/DISTRITOS_PROV_ANTA.shp"
+
+ocurrencias <- st_read(path_occ, quiet = TRUE)
+distritos <- st_read(path_distritos, quiet = TRUE) |>
+  st_transform(st_crs(ocurrencias)) |>
+  select(NOMBDIST)
+
+# La asignación se realiza espacialmente; así, cada registro se contabiliza
+# dentro del distrito que contiene su coordenada, incluido Mollepata.
+ocurrencias_distrito <- st_join(ocurrencias, distritos, left = FALSE, join = st_within) |>
+  st_drop_geometry() |>
+  filter(
+    taxnRnk %in% c("SPECIES", "SUBSPECIES"),
+    !is.na(species), species != "",
+    is.na(suppressWarnings(as.numeric(crdnUIM))) |
+      suppressWarnings(as.numeric(crdnUIM)) <= 5000
+  ) |>
+  mutate(distrito = tools::toTitleCase(tolower(NOMBDIST)))
+
+riqueza_distrital <- ocurrencias_distrito |>
+  group_by(distrito) |>
+  summarise(
+    Registros = n(),
+    Especies = n_distinct(species),
+    Generos = n_distinct(genus),
+    Familias = n_distinct(family),
+    `Especies de flora` = n_distinct(species[grupo == "flora"]),
+    `Especies de fauna` = n_distinct(species[grupo == "fauna"]),
+    .groups = "drop"
+  ) |>
+  arrange(desc(Especies))
+
+riqueza_provincial <- ocurrencias_distrito |>
+  summarise(
+    Registros = n(),
+    Especies = n_distinct(species),
+    Generos = n_distinct(genus),
+    Familias = n_distinct(family),
+    `Especies de flora` = n_distinct(species[grupo == "flora"]),
+    `Especies de fauna` = n_distinct(species[grupo == "fauna"])
+  )
+
+riqueza_grupo <- ocurrencias_distrito |>
+  group_by(grupo) |>
+  summarise(
+    Registros = n(), Especies = n_distinct(species),
+    Generos = n_distinct(genus), Familias = n_distinct(family), .groups = "drop"
+  ) |>
+  mutate(grupo = recode(grupo, flora = "Flora", fauna = "Fauna"))
+
+n_distritos <- n_distinct(ocurrencias_distrito$distrito)
+n_registros <- riqueza_provincial$Registros
+n_especies <- riqueza_provincial$Especies
+n_generos <- riqueza_provincial$Generos
+n_familias <- riqueza_provincial$Familias
+```
+
+::: {.callout-note appearance="simple"}
+## Propósito y alcance
+
+Este informe prioriza el análisis de la **riqueza taxonómica** a partir de los registros de ocurrencia georreferenciados consolidados de GBIF e iNaturalist. El ámbito es la **provincia de Anta, Cusco**, y comprende los nueve distritos: Anta, Ancahuasi, Cachimayo, Chinchaypujio, Huarocondo, Limatambo, Mollepata, Pucyura y Zurite.
+
+Los resultados describen riqueza observada en los registros disponibles; no constituyen estimaciones de riqueza total ni permiten comparar esfuerzo de muestreo entre distritos sin una estandarización adicional.
+:::
+
+# Resumen ejecutivo
+
+La base consolidada reúne **`r format(n_registros, big.mark = ",")` registros** determinados a especie o subespecie y asignados espacialmente a los `r n_distritos` distritos de Anta. En conjunto, documenta **`r format(n_especies, big.mark = ",")` especies**, **`r format(n_generos, big.mark = ",")` géneros** y **`r format(n_familias, big.mark = ",")` familias**.
+
+La asignación distrital se efectúa mediante una unión espacial entre las coordenadas de ocurrencia y el límite oficial distrital. Esta decisión evita perder los registros obtenidos por consulta poligonal —en particular los de Mollepata— que no necesariamente traen el distrito en el atributo de origen.
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin: 1.2rem 0 1.8rem 0;">
+<div style="background:#1b4965;color:white;padding:16px;border-radius:9px;text-align:center;"><div style="font-size:2rem;font-weight:700;">`r format(n_registros, big.mark=",")`</div>Registros de ocurrencia</div>
+<div style="background:#2d6a4f;color:white;padding:16px;border-radius:9px;text-align:center;"><div style="font-size:2rem;font-weight:700;">`r format(n_especies, big.mark=",")`</div>Especies registradas</div>
+<div style="background:#9c6644;color:white;padding:16px;border-radius:9px;text-align:center;"><div style="font-size:2rem;font-weight:700;">`r format(n_generos, big.mark=",")`</div>Géneros registrados</div>
+<div style="background:#6a4c93;color:white;padding:16px;border-radius:9px;text-align:center;"><div style="font-size:2rem;font-weight:700;">`r format(n_familias, big.mark=",")`</div>Familias registradas</div>
+</div>
+
+# Datos y método de análisis
+
+## Base analizada
+
+Se utiliza la capa canónica `ocurrencias_homologadas.gpkg`, que conserva el canal de descarga, la plataforma y el conjunto de origen. Los nombres de iNaturalist fueron homologados con el backbone de GBIF y los registros presentes por ambos canales fueron deduplicados mediante el identificador original de observación. Se consideran registros con rango **SPECIES** o **SUBSPECIES**, especie informada e incertidumbre conocida no mayor de 5 km. La riqueza se calcula como el número de especies distintas (`species`) para cada unidad territorial.
+
+## Procedimiento
+
+1. Se homologan los campos taxonómicos y se documenta la procedencia de cada registro.
+2. Se consolidan duplicados de iNaturalist recuperados directamente y mediados por GBIF.
+3. Cada coordenada se asigna al polígono distrital que la contiene.
+4. Se excluyen registros sin identificación a especie o subespecie y aquellos con incertidumbre conocida superior a 5 km.
+5. Para cada distrito y para la provincia se contabilizan registros, especies, géneros, familias y especies de flora y fauna.
+
+::: {.callout-warning appearance="simple"}
+## Lectura adecuada de los resultados
+
+Un mayor número de registros puede reflejar tanto mayor riqueza biológica como una mayor intensidad de observación, accesibilidad o actividad de ciencia ciudadana. Por ello, el ranking distrital se presenta como riqueza **registrada** y debe complementarse, en una siguiente etapa, con curvas de acumulación, rarefacción y revisión de vacíos espaciales.
+:::
+
+# Riqueza taxonómica provincial
+
+La provincia reúne `r riqueza_provincial[["Especies de flora"]]` especies de flora y `r riqueza_provincial[["Especies de fauna"]]` especies de fauna. Estas cifras no son aditivas entre distritos, pues una misma especie puede estar registrada en más de un distrito.
+
+```{r tabla-provincia}
+datatable(riqueza_provincial, rownames = FALSE,
+  options = list(dom = "t", scrollX = TRUE), class = "cell-border stripe compact")
+```
+
+## Composición por grupo biológico
+
+```{r fig-grupos, fig.cap="Registros y riqueza taxonómica por grupo biológico en la provincia de Anta"}
+riqueza_grupo_larga <- riqueza_grupo |>
+  select(grupo, Registros, Especies) |>
+  tidyr::pivot_longer(-grupo, names_to = "indicador", values_to = "valor")
+
+ggplot(riqueza_grupo_larga, aes(grupo, valor, fill = grupo)) +
+  geom_col(width = .62, show.legend = FALSE) +
+  geom_text(aes(label = comma(valor)), vjust = -0.35, size = 3.6) +
+  facet_wrap(~indicador, scales = "free_y") +
+  scale_fill_manual(values = c("Flora" = "#40916c", "Fauna" = "#277da1")) +
+  scale_y_continuous(labels = comma, expand = expansion(mult = c(0, .13))) +
+  labs(x = NULL, y = NULL) + theme_minimal(base_size = 11) +
+  theme(panel.grid.minor = element_blank(), strip.text = element_text(face = "bold"))
+```
+
+# Riqueza taxonómica por distrito
+
+## Comparación distrital
+
+La siguiente tabla es el resultado central del informe. La riqueza de especies se expresa por distrito y distingue flora de fauna; las columnas de géneros y familias aportan una lectura de la amplitud taxonómica registrada.
+
+```{r tabla-distritos}
+datatable(riqueza_distrital, rownames = FALSE, filter = "top",
+  options = list(pageLength = 9, dom = "tip", scrollX = TRUE,
+                 language = list(url = "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json")),
+  class = "cell-border stripe hover compact")
+```
+
+## Gradiente de riqueza observada
+
+```{r fig-riqueza-distrital, fig.cap="Riqueza observada de especies por distrito, separada en flora y fauna"}
+riqueza_larga <- riqueza_distrital |>
+  select(distrito, `Especies de flora`, `Especies de fauna`) |>
+  tidyr::pivot_longer(-distrito, names_to = "grupo", values_to = "especies") |>
+  mutate(grupo = recode(grupo, `Especies de flora` = "Flora", `Especies de fauna` = "Fauna"))
+orden_distritos <- riqueza_distrital |> arrange(Especies) |> pull(distrito)
+
+ggplot(riqueza_larga, aes(x = factor(distrito, levels = orden_distritos), y = especies, fill = grupo)) +
+  geom_col(position = "stack", width = .72) +
+  geom_text(data = riqueza_distrital,
+    aes(x = factor(distrito, levels = orden_distritos), y = `Especies de flora` + `Especies de fauna`, label = Especies),
+    inherit.aes = FALSE, hjust = -0.18, size = 3.3) +
+  coord_flip() +
+  scale_fill_manual(values = c("Flora" = "#52b788", "Fauna" = "#277da1")) +
+  scale_y_continuous(expand = expansion(mult = c(0, .12))) +
+  labs(x = NULL, y = "Número de especies registradas", fill = NULL) +
+  theme_minimal(base_size = 11) + theme(panel.grid.minor = element_blank(), legend.position = "top")
+```
+
+## Relación entre registros y especies
+
+```{r fig-esfuerzo, fig.cap="Relación entre número de registros y riqueza observada por distrito"}
+ggplot(riqueza_distrital, aes(Registros, Especies, label = distrito)) +
+  geom_point(size = 3.5, colour = "#1b4965", alpha = .85) +
+  geom_text(nudge_y = 17, size = 3.2, check_overlap = TRUE) +
+  scale_x_continuous(labels = comma) +
+  labs(x = "Registros de ocurrencia", y = "Especies registradas",
+       caption = "La relación evidencia la influencia del esfuerzo de registro en la riqueza observada.") +
+  theme_minimal(base_size = 11) + theme(panel.grid.minor = element_blank())
+```
+
+# Interpretación para la planificación
+
+1. **Priorizar la cobertura de muestreo.** Los contrastes en número de registros entre distritos pueden condicionar la riqueza observada. Antes de definir prioridades de conservación exclusivamente con estos valores, conviene focalizar inventarios complementarios en los distritos con menor cobertura.
+2. **Usar la riqueza como línea base.** La tabla distrital permite identificar taxones y lugares para revisión de campo, evaluación de hábitat y construcción de indicadores de seguimiento del PDM.
+3. **Diferenciar flora y fauna.** La composición por grupo muestra que un distrito puede concentrar riqueza en flora o fauna; esta distinción debe mantenerse en acciones de restauración, conectividad y control de presiones.
+4. **Mantener trazabilidad.** Los resultados se derivan de archivos finales consolidados y de una asignación espacial reproducible al límite distrital oficial.
+
+# Próximos pasos recomendados
+
+- Estandarizar el esfuerzo de muestreo mediante rarefacción o cobertura de muestra antes de comparar riqueza entre distritos.
+- Elaborar mapas de densidad y vacíos de datos, distinguiendo registros de GBIF e iNaturalist.
+- Revisar registros fuera de rango, especies introducidas y taxones de interés para conservación.
+- Complementar esta línea base con campañas de campo dirigidas a grupos y distritos subrepresentados.
+
+::: {.text-muted style="font-size: 0.85rem; border-top: 1px solid #dee2e6; padding-top: 15px; margin-top: 30px;"}
+*Reporte automatizado con Quarto y R. Fuente: registros consolidados de GBIF e iNaturalist para la provincia de Anta.*
+:::

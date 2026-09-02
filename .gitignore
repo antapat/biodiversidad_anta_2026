@@ -1,0 +1,27 @@
+# Credenciales y variables privadas
+.Renviron
+.env
+*.key
+*.pem
+
+# Dependencias locales de R y proyectos
+.r-library/
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Despliegues y temporales
+rsconnect/
+.rscignore
+temp/
+scratch/
+*.log
+*.jpg.backup
+outputs/analisis_biodiversidad/assets/
+
+# Capas espaciales crudas locales pesadas (>100MB, ahora en Supabase)
+data/spatial/*.dbf
+data/spatial/*.gpkg
+data/tabular/ocurrencias_totales_anta_0803.csv
+outputs/analisis_biodiversidad/ocurrencias_puntos_sf.rds
