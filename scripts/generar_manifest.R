@@ -1,11 +1,10 @@
-# Generador de manifest.json limpio y verificado para Posit Connect Cloud
+# Generador nativo y canónico de manifest.json para Posit Connect Cloud
 if (dir.exists(".r-library")) {
   .libPaths(c(file.path(getwd(), ".r-library"), .libPaths()))
 }
 
 suppressPackageStartupMessages({
   library(rsconnect)
-  library(jsonlite)
 })
 
 # Lista exacta de archivos de la aplicación que existen en el repositorio Git
@@ -23,18 +22,17 @@ app_files <- app_files[file.exists(app_files)]
 message("Archivos incluidos en el manifiesto:")
 print(app_files)
 
-# Generar manifiesto oficial con rsconnect
+# Generar manifiesto nativo con rsconnect (mantiene tipos null exactos requeridos por Posit Connect)
 rsconnect::writeManifest(
   appPrimaryDoc = "app.R",
   appFiles = app_files,
   quiet = FALSE
 )
 
-# Ajuste de compatibilidad para Linux Connect Cloud: terra 1.9-27
-m <- jsonlite::fromJSON("manifest.json", simplifyVector = FALSE)
-if ("terra" %in% names(m$packages)) {
-  m$packages$terra$description$Version <- "1.9-27"
-}
+# Reemplazo seguro de versión de terra a 1.9-27 para compatibilidad Linux Connect Cloud
+manifest_txt <- readLines("manifest.json", warn = FALSE)
+# Reemplazar versión de terra de forma quirúrgica manteniendo el formato JSON estricto
+manifest_txt <- gsub('"Version": "1.9-34"', '"Version": "1.9-27"', manifest_txt, fixed = TRUE)
+writeLines(manifest_txt, "manifest.json", useBytes = TRUE)
 
-writeLines(jsonlite::toJSON(m, pretty = TRUE, auto_unbox = TRUE), "manifest.json", useBytes = TRUE)
-message("manifest.json generado y validado con exito.")
+message("manifest.json canónico generado exitosamente.")
