@@ -25,6 +25,8 @@ suppressPackageStartupMessages({
   library(htmltools)
   library(jsonlite)
   library(geojsonsf)
+  library(DBI)
+  library(RPostgres)
 })
 
 # Cargar funciones auxiliares y módulos
