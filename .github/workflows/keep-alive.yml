@@ -1,0 +1,23 @@
+name: Keep Supabase Alive
+
+on:
+  schedule:
+    # Corre cada domingo y jueves a las 05:00 UTC (~00:00 hora Perú)
+    - cron: '0 5 * * 0,4'
+  workflow_dispatch:   # permite ejecutarlo manualmente desde la pestaña Actions
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Instalar cliente de PostgreSQL
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+      - name: Consulta mínima a Supabase
+        env:
+          PGHOST: ${{ secrets.SUPABASE_HOST }}
+          PGPORT: ${{ secrets.SUPABASE_PORT }}
+          PGDATABASE: ${{ secrets.SUPABASE_DB }}
+          PGUSER: ${{ secrets.SUPABASE_USER }}
+          PGPASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+        run: psql -c "SELECT 1;"
