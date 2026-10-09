@@ -2,22 +2,49 @@ name: Keep Supabase Alive
 
 on:
   schedule:
-    # Corre cada domingo y jueves a las 05:00 UTC (~00:00 hora Perú)
-    - cron: '0 5 * * 0,4'
-  workflow_dispatch:   # permite ejecutarlo manualmente desde la pestaña Actions
+    # Corre cada 3 días a las 05:00 UTC (~00:00 hora Perú)
+    - cron: '0 5 */3 * *'
+  workflow_dispatch: # Permite ejecución manual desde GitHub Actions
 
 jobs:
   ping-supabase:
     runs-on: ubuntu-latest
     steps:
-      - name: Instalar cliente de PostgreSQL
-        run: sudo apt-get update && sudo apt-get install -y postgresql-client
-
-      - name: Consulta mínima a Supabase
+      - name: Ping vía API REST (PostgREST)
+        # Supabase detecta actividad garantizada a través de su API Gateway
         env:
-          PGHOST: ${{ secrets.SUPABASE_HOST }}
-          PGPORT: ${{ secrets.SUPABASE_PORT }}
-          PGDATABASE: ${{ secrets.SUPABASE_DB }}
-          PGUSER: ${{ secrets.SUPABASE_USER }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://biosgkmmkjylceckzmcu.supabase.co' }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY || 'sb_publishable_4FMhLd1mLdu5NpL-2ys_bw_9yyMzQC2' }}
+        run: |
+          echo "Realizando petición HTTP a la API REST de Supabase..."
+          HTTP_STATUS=$(curl -s -o response.json -w "%{http_code}" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            "$SUPABASE_URL/rest/v1/?apikey=$SUPABASE_ANON_KEY")
+          echo "Código HTTP recibido: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 400 ]; then
+            echo "✅ Ping REST completado con éxito."
+          else
+            echo "⚠️ Advertencia en respuesta ($HTTP_STATUS):"
+            cat response.json || true
+          fi
+
+      - name: Ping directo a PostgreSQL (Pooler)
+        env:
+          PGHOST: ${{ secrets.SUPABASE_HOST || 'aws-0-us-west-2.pooler.supabase.com' }}
+          PGPORT: ${{ secrets.SUPABASE_PORT || '5432' }}
+          PGDATABASE: ${{ secrets.SUPABASE_DB || 'postgres' }}
+          PGUSER: ${{ secrets.SUPABASE_USER || 'postgres.biosgkmmkjylceckzmcu' }}
           PGPASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
-        run: psql -c "SELECT 1;"
+          PGSSLMODE: require
+          PGCONNECT_TIMEOUT: 15
+        run: |
+          if [ -n "$PGPASSWORD" ]; then
+            echo "Instalando cliente PostgreSQL..."
+            sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+            echo "Ejecutando SELECT 1 en Supabase..."
+            psql -c "SELECT 1 AS alive;"
+            echo "✅ Ping PostgreSQL completado con éxito."
+          else
+            echo "ℹ️ PGPASSWORD no configurado en Secrets; omitiendo ping PostgreSQL."
+          fi
