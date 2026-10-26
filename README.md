@@ -71,7 +71,7 @@ El contenedor instala R y las dependencias de la app durante la construcción; s
 
 #### Publicar en Docker Hub
 
-El workflow `.github/workflows/docker-publish.yml` construye y publica `patanta/biodiversidad-anta:latest` y una etiqueta por commit al hacer push a `main`, o al ejecutarlo manualmente desde **GitHub → Actions → Build and publish Docker image → Run workflow**. En Docker Hub crea el repositorio `patanta/biodiversidad-anta` (público si el servidor descargará sin autenticación). En el repositorio GitHub configura los secrets `DOCKERHUB_USERNAME` (usuario `patanta`) y `DOCKERHUB_TOKEN` (access token de Docker Hub con permiso de escritura). Al terminar el workflow, el servidor descarga y arranca la imagen con `docker compose -f docker-compose.prod.yml pull` y `docker compose -f docker-compose.prod.yml up -d`.
+El workflow `.github/workflows/docker-publish.yml` inicia sesión en Docker Hub como `patanta` y publica `patanta/biodiversidad_anta_2026`. Configura el secret `DOCKERHUB_TOKEN` con un access token de Docker Hub que pueda escribir en ese repositorio. En el servidor, el Compose usa el mismo namespace; luego ejecuta `docker compose -f docker-compose.prod.yml pull` y `docker compose -f docker-compose.prod.yml up -d`.
 
 ---
 *Municipalidad Provincial de Anta · Cusco, Perú — Actualización 2026*

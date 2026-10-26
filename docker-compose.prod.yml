@@ -1,6 +1,6 @@
 services:
   biodiversidad-anta:
-    image: patanta/biodiversidad-anta:latest
+    image: ${DOCKERHUB_USERNAME:-patanta}/biodiversidad_anta_2026:latest
     container_name: biodiversidad-anta
     restart: unless-stopped
     ports:
