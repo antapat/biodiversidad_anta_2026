@@ -216,7 +216,8 @@ mod_metodologia_descarga_ui <- function(id) {
   )
 }
 
-mod_metodologia_descarga_server <- function(id, data_especies, data_ebird_especies, data_cuadricula) {
+mod_metodologia_descarga_server <- function(id, data_especies, data_ebird_especies, data_cuadricula,
+                                           sf_ebird_hotspots, sf_cuadricula, sf_distritos) {
   moduleServer(id, function(input, output, session) {
 
     output$texto_celdas_descarga <- renderText({
@@ -230,7 +231,8 @@ mod_metodologia_descarga_server <- function(id, data_especies, data_ebird_especi
     output$descargar_ebird_geojson <- downloadHandler(
       filename = function() "anta_ebird_hotspots.geojson",
       content = function(file) {
-        file.copy("outputs/analisis_biodiversidad/ebird_hotspots_anta.geojson", file)
+        sf::st_write(sf_ebird_hotspots, file, driver = "GeoJSON", quiet = TRUE,
+                     delete_dsn = TRUE)
       }
     )
     
@@ -244,14 +246,16 @@ mod_metodologia_descarga_server <- function(id, data_especies, data_ebird_especi
     output$descargar_grid_geojson <- downloadHandler(
       filename = function() "anta_cuadricula_5km_cobertura.geojson",
       content = function(file) {
-        file.copy("outputs/analisis_biodiversidad/cobertura_cuadricula_5km.geojson", file)
+        sf::st_write(sf_cuadricula, file, driver = "GeoJSON", quiet = TRUE,
+                     delete_dsn = TRUE)
       }
     )
     
     output$descargar_distritos_geojson <- downloadHandler(
       filename = function() "anta_biodiversidad_distritos.geojson",
       content = function(file) {
-        file.copy("outputs/analisis_biodiversidad/biodiversidad_distritos.geojson", file)
+        sf::st_write(sf_distritos, file, driver = "GeoJSON", quiet = TRUE,
+                     delete_dsn = TRUE)
       }
     )
     

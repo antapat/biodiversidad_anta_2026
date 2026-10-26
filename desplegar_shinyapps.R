@@ -22,15 +22,7 @@ archivos_despliegue <- c(
   "app.R",
   "DESCRIPTION",
   list.files("R", pattern = "\\.R$", full.names = TRUE),
-  c("www/custom.css", "www/logo_anta.jpg"),
-  # RDS para carga rápida; los CSV voluminosos se generan al descargarlos.
-  list.files("outputs/analisis_biodiversidad", pattern = "\\.(rds|geojson)$", full.names = TRUE),
-  c(
-    "outputs/analisis_biodiversidad/resumen_distritos.csv",
-    "outputs/analisis_biodiversidad/singularidad_distritos.csv",
-    "outputs/analisis_biodiversidad/recambio_jaccard_distritos.csv",
-    "outputs/analisis_biodiversidad/cobertura_cuadricula_5km.csv"
-  )
+  c("www/custom.css", "www/logo_anta.jpg")
 )
 
 archivos_despliegue <- gsub("^\\./", "", archivos_despliegue)

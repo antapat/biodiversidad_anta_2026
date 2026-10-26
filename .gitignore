@@ -22,3 +22,4 @@ scratch/
 # Archivos de datos locales y outputs (Servidos exclusivamente desde Supabase)
 data/
 outputs/
+logs/

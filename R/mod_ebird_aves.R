@@ -540,7 +540,8 @@ mod_ebird_aves_server <- function(id, data_ebird_especies, data_ebird_resumen, s
     output$btn_descargar_hotspots_geojson <- downloadHandler(
       filename = function() "anta_ebird_hotspots.geojson",
       content = function(file) {
-        file.copy("outputs/analisis_biodiversidad/ebird_hotspots_anta.geojson", file)
+        sf::st_write(sf_ebird_hotspots, file, driver = "GeoJSON", quiet = TRUE,
+                     delete_dsn = TRUE)
       }
     )
   })

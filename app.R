@@ -31,6 +31,10 @@ suppressPackageStartupMessages({
 
 # Cargar funciones auxiliares y módulos
 source("R/utils_data.R", encoding = "UTF-8")
+if (!nzchar(Sys.getenv("NEON_DATABASE_URL", "")) &&
+    !nzchar(Sys.getenv("NEON_HOST", ""))) {
+  stop("La aplicación requiere NEON_DATABASE_URL (o NEON_HOST/NEON_PASSWORD) para cargar sus datos desde Neon.")
+}
 source("R/mod_resumen_ejecutivo.R", encoding = "UTF-8")
 source("R/mod_explorador_distrital.R", encoding = "UTF-8")
 source("R/mod_delimitacion_poligono.R", encoding = "UTF-8")
@@ -219,7 +223,10 @@ server <- function(input, output, session) {
   mod_ebird_aves_server("ebird", data_ebird_especies, data_ebird_resumen, sf_ebird_hotspots, sf_distritos)
   mod_mapa_cobertura_server("mapa", sf_distritos, sf_cuadricula, data_cuadricula, data_resumen)
   mod_recambio_ecologico_server("recambio", data_recambio, data_singularidad)
-  mod_metodologia_descarga_server("metodologia", data_especies, data_ebird_especies, data_cuadricula)
+mod_metodologia_descarga_server(
+  "metodologia", data_especies, data_ebird_especies, data_cuadricula,
+  sf_ebird_hotspots, sf_cuadricula, sf_distritos
+)
 }
 
 # Ejecutar la aplicación

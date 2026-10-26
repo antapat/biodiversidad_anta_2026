@@ -1,26 +1,14 @@
 -- ==============================================================================
--- SUPABASE_SCHEMA.SQL: Definición del Esquema de Biodiversidad Provincial de Anta
+-- POSTGRES_SCHEMA.SQL: Definición del Esquema de Biodiversidad Provincial de Anta
 -- Municipalidad Provincial de Anta - Gerencia de Desarrollo Urbano y Rural (GDUR)
--- Compatible con PostgreSQL 15+ y PostGIS en Supabase
+-- Compatible con PostgreSQL 15+ y PostGIS (Neon / Supabase)
 -- ==============================================================================
 
 -- 1. Activar Extensión PostGIS
 CREATE EXTENSION IF NOT EXISTS postgis;
 
--- 2. Eliminar tablas previas si existen (orden inverso de dependencias)
-DROP TABLE IF EXISTS geo_ocurrencias_puntos CASCADE;
-DROP TABLE IF EXISTS geo_ocurrencias_mapa CASCADE;
-DROP TABLE IF EXISTS geo_ebird_hotspots CASCADE;
-DROP TABLE IF EXISTS geo_cuadricula_5km CASCADE;
-DROP TABLE IF EXISTS geo_distritos CASCADE;
-
-DROP TABLE IF EXISTS tab_cobertura_cuadricula CASCADE;
-DROP TABLE IF EXISTS tab_ebird_hotspots_resumen CASCADE;
-DROP TABLE IF EXISTS tab_ebird_especies CASCADE;
-DROP TABLE IF EXISTS tab_recambio_jaccard CASCADE;
-DROP TABLE IF EXISTS tab_singularidad_distritos CASCADE;
-DROP TABLE IF EXISTS tab_resumen_distritos CASCADE;
-DROP TABLE IF EXISTS tab_especies_distrito CASCADE;
+-- Las tablas se crean de forma no destructiva. El script de carga reemplaza
+-- transaccionalmente el contenido de las capas tabulares.
 
 -- ==============================================================================
 -- TABLAS TABULARES Y ANALÍTICAS
