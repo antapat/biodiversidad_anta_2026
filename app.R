@@ -12,7 +12,9 @@ if (dir.exists(".r-library")) {
 # Windows puede iniciar R con una página de códigos que no admite acentos ni
 # símbolos UTF-8 presentes en la interfaz. Normalizarla aquí permite ejecutar
 # la app directamente, además de usar el lanzador incluido en el proyecto.
-invisible(try(Sys.setlocale("LC_CTYPE", "English_United States.utf8"), silent = TRUE))
+if (.Platform$OS.type == "windows") {
+  invisible(try(Sys.setlocale("LC_CTYPE", "English_United States.utf8"), silent = TRUE))
+}
 
 suppressPackageStartupMessages({
   library(shiny)
@@ -33,7 +35,13 @@ suppressPackageStartupMessages({
 source("R/utils_data.R", encoding = "UTF-8")
 if (!nzchar(Sys.getenv("NEON_DATABASE_URL", "")) &&
     !nzchar(Sys.getenv("NEON_HOST", ""))) {
-  stop("La aplicación requiere NEON_DATABASE_URL (o NEON_HOST/NEON_PASSWORD) para cargar sus datos desde Neon.")
+  stop(paste(
+    "Falta la configuración de Neon en las variables de entorno de esta aplicación.",
+    "En Posit Connect Cloud abre Content Settings > Variables y añade NEON_DATABASE_URL",
+    "con la cadena de conexión de Neon como valor (sin comillas ni el prefijo NEON_DATABASE_URL=).",
+    "Guarda y vuelve a publicar. Alternativamente configura NEON_HOST, NEON_PASSWORD,",
+    "NEON_USER, NEON_DB y NEON_PORT. Las credenciales locales de .Renviron no se publican."
+  ), call. = FALSE)
 }
 source("R/mod_resumen_ejecutivo.R", encoding = "UTF-8")
 source("R/mod_explorador_distrital.R", encoding = "UTF-8")
