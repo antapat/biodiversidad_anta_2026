@@ -14,7 +14,35 @@ local_fallback_enabled <- function() {
   identical(tolower(Sys.getenv("BIODIVERSIDAD_ALLOW_LOCAL_FALLBACK", "false")), "true")
 }
 
+# Las pruebas utilizan exclusivamente el paquete local, aunque existan secretos Neon.
+app_data_mode <- function() {
+  mode <- tolower(trimws(Sys.getenv("BIODIVERSIDAD_DATA_MODE", "local")))
+  if (!mode %in% c("local", "neon")) stop("BIODIVERSIDAD_DATA_MODE debe ser local o neon.")
+  mode
+}
+
+local_table_names <- c("tab_especies_distrito", "tab_resumen_distritos",
+  "tab_singularidad_distritos", "tab_recambio_jaccard", "tab_cobertura_cuadricula",
+  "tab_ebird_especies", "tab_ebird_hotspots_resumen")
+
+load_packaged_table <- function(name) {
+  path <- file.path("app-data", paste0(name, ".rds"))
+  if (!file.exists(path)) stop("Falta el dato local ", path,
+    ". Ejecuta Rscript scripts/preparar_datos_locales.R", call. = FALSE)
+  data <- readRDS(path)
+  if (!is.data.frame(data) || !nrow(data)) stop("Tabla local vacía o inválida: ", name)
+  data
+}
+
 load_neon_required <- function() {
+  if (app_data_mode() == "local") {
+    invisible(lapply(local_table_names, load_packaged_table))
+    required <- c("geo_ocurrencias_puntos", "geo_ocurrencias_mapa", "geo_distritos",
+      "geo_cuadricula_5km", "geo_ebird_hotspots", "patrimonio_natural")
+    missing <- required[!file.exists(vapply(required, spatial_asset_path, character(1)))]
+    if (length(missing)) stop("Faltan capas locales: ", paste(missing, collapse = ", "))
+    return(invisible(NULL))
+  }
   con <- supabase_connect()
   if (is.null(con)) stop("No se pudo conectar a Neon. Verifica NEON_DATABASE_URL.", call. = FALSE)
   required <- c(
@@ -34,6 +62,7 @@ load_neon_required <- function() {
 
 # Cargar tabla desde Neon; ante error solo usar local si se habilitó explícitamente.
 load_neon_table_or_local <- function(table_name, local_loader) {
+  if (app_data_mode() == "local") return(load_packaged_table(table_name))
   con <- supabase_connect()
   if (!is.null(con)) {
     data <- tryCatch(DBI::dbReadTable(con, table_name), error = function(e) {
@@ -55,6 +84,7 @@ load_neon_table_or_local <- function(table_name, local_loader) {
 load_neon_sf_or_local <- function(table_name, local_loader) {
   # Capas versionadas junto al visor; Neon sigue suministrando las tablas.
   if (file.exists(spatial_asset_path(table_name))) return(read_spatial_asset(table_name))
+  if (app_data_mode() == "local") return(read_spatial_asset(table_name))
   con <- supabase_connect()
   if (!is.null(con)) {
     data <- tryCatch(sf::st_read(con, query = sprintf("SELECT * FROM %s", table_name), quiet = TRUE),
@@ -193,7 +223,8 @@ load_app_data <- local({
   function(refresh = FALSE) {
     if (is.null(cache) || isTRUE(refresh)) {
       load_neon_required()
-      message("Cargando catálogo de biodiversidad desde Neon PostgreSQL / PostGIS...")
+      origin <- if (app_data_mode() == "local") "Datos locales de pruebas" else "Neon PostgreSQL / PostGIS"
+      message("Cargando catálogo de biodiversidad: ", origin)
       cache <<- list(
         especies = load_especies_distrito(),
         ocurrencias = load_ocurrencias_sf(),
@@ -209,7 +240,7 @@ load_app_data <- local({
         ebird_hotspots = load_ebird_hotspots_sf(),
         patrimonio_natural = read_spatial_asset("patrimonio_natural"),
         origen_espacial = "GeoJSON gzip versionado en www/spatial; WGS84, precisión de 6 decimales",
-        origen = "Neon PostgreSQL / PostGIS"
+        origen = origin
       )
     }
 

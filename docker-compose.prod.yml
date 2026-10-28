@@ -4,7 +4,8 @@ services:
     container_name: biodiversidad-anta
     restart: unless-stopped
     environment:
-      NEON_DATABASE_URL: ${NEON_DATABASE_URL:?Configura NEON_DATABASE_URL en .env}
+      BIODIVERSIDAD_DATA_MODE: ${BIODIVERSIDAD_DATA_MODE:-local}
+      NEON_DATABASE_URL: ${NEON_DATABASE_URL:-}
       BIODIVERSIDAD_ALLOW_LOCAL_FALLBACK: "false"
       SHINY_LOG_STDOUT: "1"
     healthcheck:

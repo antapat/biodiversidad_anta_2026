@@ -30,6 +30,7 @@ WORKDIR /srv/shiny-server/biodiversidad_anta
 COPY app.R DESCRIPTION ./
 COPY R ./R
 COPY www ./www
+COPY app-data ./app-data
 
 RUN chown -R shiny:shiny /srv/shiny-server/biodiversidad_anta
 

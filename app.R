@@ -33,7 +33,7 @@ suppressPackageStartupMessages({
 
 # Cargar funciones auxiliares y módulos
 source("R/utils_data.R", encoding = "UTF-8")
-if (!nzchar(Sys.getenv("NEON_DATABASE_URL", "")) &&
+if (app_data_mode() == "neon" && !nzchar(Sys.getenv("NEON_DATABASE_URL", "")) &&
     !nzchar(Sys.getenv("NEON_HOST", ""))) {
   stop(paste(
     "Falta la configuración de Neon en las variables de entorno de esta aplicación.",

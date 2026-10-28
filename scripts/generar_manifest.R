@@ -15,7 +15,8 @@ app_files <- c(
   "README.md",
   "logo_anta.jpg",
   list.files("R", pattern = "\\.R$", full.names = TRUE),
-  list.files("www", full.names = TRUE, recursive = TRUE)
+  list.files("www", full.names = TRUE, recursive = TRUE),
+  list.files("app-data", pattern = "\\.rds$", full.names = TRUE)
 )
 app_files <- gsub("^\\./", "", gsub("\\\\", "/", app_files))
 stopifnot(all(file.exists(app_files)), !any(dir.exists(app_files)))
@@ -23,6 +24,7 @@ required_spatial <- file.path("www/spatial", paste0(c("patrimonio_natural",
   "geo_distritos", "geo_cuadricula_5km", "geo_ebird_hotspots",
   "geo_ocurrencias_puntos", "geo_ocurrencias_mapa"), ".geojson.gz"))
 stopifnot(all(required_spatial %in% app_files))
+stopifnot(length(list.files("app-data", pattern = "\\.rds$")) == 7L)
 
 message("Archivos incluidos en el manifiesto:")
 print(app_files)

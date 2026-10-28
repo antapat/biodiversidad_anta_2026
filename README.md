@@ -38,7 +38,11 @@ Plataforma territorial interactiva para la gestión, análisis, monitoreo y toma
 
 ## 🚀 Despliegue y Ejecución
 
-### Variables de Entorno Requeridas (`.Renviron`)
+### Modo de pruebas local y conexión opcional a Neon
+
+La aplicación usa **datos locales por defecto** (`BIODIVERSIDAD_DATA_MODE=local`). No necesita secretos ni acceso a Neon durante las pruebas, incluso si hay credenciales configuradas. Incluye siete tablas compactas en `app-data/` y las capas optimizadas en `www/spatial/`; ambos directorios se publican con el manifiesto de Connect Cloud. La delimitación de especies se resuelve en memoria con sf. Para regenerar las tablas tras actualizar los análisis, ejecuta `Rscript scripts/preparar_datos_locales.R` y después `Rscript scripts/generar_manifest.R`, y publica los cambios.
+
+Para usar Neon cuando sus tablas estén cargadas, configura **`BIODIVERSIDAD_DATA_MODE=neon`** junto con las siguientes credenciales.
 Copie la cadena de conexión **pooled** (host con `-pooler`) desde **Connect** en la rama Neon indicada. Guárdela solo en `.Renviron`, que está excluido de Git:
 
 ```env
@@ -47,9 +51,9 @@ NEON_DATABASE_URL="postgresql://<usuario>:<contraseña>@<host-pooler>/<base>?ssl
 
 También se acepta la configuración por campos: `NEON_HOST`, `NEON_PORT`, `NEON_DB`, `NEON_USER` y `NEON_PASSWORD`. Neon tiene prioridad si se configura; Supabase se conserva como alternativa mediante `SUPABASE_HOST`, `SUPABASE_PORT`, `SUPABASE_DB`, `SUPABASE_USER` y `SUPABASE_PASSWORD`.
 
-La app lee de Neon y, si faltan conexión, tablas o registros, detiene el inicio con un diagnóstico en lugar de presentar archivos locales como datos remotos. El fallback local solo se habilita explícitamente con `BIODIVERSIDAD_ALLOW_LOCAL_FALLBACK=true` para desarrollo. Ejecuta la carga desde RStudio abriendo `scripts/actualizar_neon.R` y pulsando **Source**, o usa `Rscript scripts/migrar_a_supabase.R`. La carga actualiza las tablas tabulares reiniciando sus identidades y reemplaza las capas espaciales desde los archivos locales. El esquema base no elimina otras tablas.
+En modo `neon`, si faltan conexión, tablas o registros, la app detiene el inicio con un diagnóstico. El fallback de ese modo solo se habilita explícitamente con `BIODIVERSIDAD_ALLOW_LOCAL_FALLBACK=true`; es independiente del modo de pruebas `local`. Ejecuta la carga desde RStudio abriendo `scripts/actualizar_neon.R` y pulsando **Source**, o usa `Rscript scripts/migrar_a_supabase.R`. La carga actualiza las tablas tabulares reiniciando sus identidades y reemplaza las capas espaciales desde los archivos locales. El esquema base no elimina otras tablas.
 
-El archivo `.Renviron` está configurado localmente y excluido de Git. Para que la versión de shinyapps.io consuma Neon, configura `NEON_DATABASE_URL` como variable de entorno secreta en la configuración de esa aplicación en shinyapps.io y luego vuelve a desplegar. El script de despliegue ya no incluye archivos `outputs/`; producción requiere que Neon contenga las 12 tablas/capas. El rol de conexión debe tener permiso para `CREATE EXTENSION postgis` durante la carga inicial.
+El archivo `.Renviron` está excluido de Git. Para que la versión publicada consuma Neon, configura `BIODIVERSIDAD_DATA_MODE=neon` y `NEON_DATABASE_URL` como variable secreta, y vuelve a desplegar. Las publicaciones incluyen `app-data/` para las pruebas locales; no incluyen `outputs/` ni credenciales. El rol de conexión debe tener permiso para `CREATE EXTENSION postgis` durante la carga inicial.
 
 Para automatizar la actualización, cree una tarea en el Programador de tareas de Windows que ejecute PowerShell con `-NoProfile -ExecutionPolicy Bypass -File "D:\\biodiversidad_anta_2026\\scripts\\actualizar_neon.ps1"`. Configure el disparador según la frecuencia con que se regeneren los archivos de `outputs/analisis_biodiversidad`; la carga no descarga fuentes nuevas, solo publica esos archivos locales.
 
@@ -98,7 +102,7 @@ docker compose -f docker-compose.prod.yml logs -f proxy
 
 Cuando GitHub Actions publique una imagen nueva, actualiza el VPS con `docker compose -f docker-compose.prod.yml pull` y `docker compose -f docker-compose.prod.yml up -d`. Caddy conserva los certificados en volúmenes Docker y renueva HTTPS automáticamente.
 
-El contenedor necesita que las tablas y capas requeridas ya estén cargadas en Neon. No guarda datos locales. Mantén privado `.env` y limita el acceso SSH al VPS.
+El contenedor incluye los datos de pruebas locales. Si activas el modo `neon`, necesita las tablas requeridas cargadas en Neon. Mantén privado `.env` y limita el acceso SSH al VPS.
 
 ---
 *Municipalidad Provincial de Anta · Cusco, Perú — Actualización 2026*
@@ -120,6 +124,6 @@ Rscript scripts/test_patrimonio.R
 
 `www/spatial/inventario.csv` registra origen, elementos, tamaños antes/después y parámetros. Se elige GeoJSON gzip por compatibilidad directa con sf/MapLibre y para evitar un decodificador GeoParquet en el navegador. Las capas adicionales quedan disponibles como archivos comprimidos; el visor utiliza las cinco capas `geo_*` y `patrimonio_natural`.
 
-**Actualización espacial:** al cambiar los insumos, regenerar los archivos y volver a publicar la aplicación. Neon sigue suministrando las tablas estadísticas y catálogos; para las cinco capas espaciales se prefieren las instantáneas optimizadas incluidas en la versión, usando PostGIS si falta una instantánea. Actualizar Neon por sí solo no actualiza estas instantáneas. Docker incluye `www` y el despliegue de shinyapps.io incluye `www/spatial`. No se ha publicado automáticamente esta versión.
+**Actualización espacial:** al cambiar los insumos, regenerar los archivos y volver a publicar la aplicación. Durante las pruebas, las tablas se leen desde `app-data/` y las capas desde `www/spatial/`. En modo `neon`, las tablas se consultan en la base de datos y las capas usan las instantáneas incluidas, recurriendo a PostGIS si falta una capa. Actualizar Neon por sí solo no actualiza estas instantáneas. Docker, shinyapps.io y el manifiesto de Connect Cloud incluyen ambos directorios locales.
 
 La primera conversión comprende 12 capas (323,7 MB de insumos frente a aproximadamente 13,9 MB comprimidos). El inventario de patrimonio ocupa unos 2,9 KB. La comparación incluye formatos originales diferentes: el GeoJSON gzip de ocurrencias completas resulta mayor que su RDS binario comprimido; este RDS se conserva. Para mostrar ocurrencias se mantiene la capa agregada `geo_ocurrencias_mapa`, de unos 61 KB.

@@ -3061,8 +3061,29 @@
     }
   },
   "files": {
+    "app-data/tab_cobertura_cuadricula.rds": {
+      "checksum": "05e790619fccb8c3f2475dff3f1b5cac"
+    },
+    "app-data/tab_ebird_especies.rds": {
+      "checksum": "6b3a1edd03fdaf3f837d1bf6edfbe39f"
+    },
+    "app-data/tab_ebird_hotspots_resumen.rds": {
+      "checksum": "d560a82ca85fb3de80292daa062d2291"
+    },
+    "app-data/tab_especies_distrito.rds": {
+      "checksum": "44988a8b7e397a832ac40f81cbf27238"
+    },
+    "app-data/tab_recambio_jaccard.rds": {
+      "checksum": "89906eef99a37bfbe1bfc8c324799061"
+    },
+    "app-data/tab_resumen_distritos.rds": {
+      "checksum": "73d19e7c3aa1536f6d5fe3b69bd55fc4"
+    },
+    "app-data/tab_singularidad_distritos.rds": {
+      "checksum": "b14c4eaff18299a45a483bbf6f8a3b4d"
+    },
     "app.R": {
-      "checksum": "8bfae6a806ce7d132984dc8ea5cb36dd"
+      "checksum": "9feefda184408c7e849269712dabd1e0"
     },
     "DESCRIPTION": {
       "checksum": "0445f26812dea0ce186da2811b6292c1"
@@ -3071,7 +3092,7 @@
       "checksum": "11b332a6fa5f3e78abf4b5d212fcba3a"
     },
     "R/mod_delimitacion_poligono.R": {
-      "checksum": "8a8dda4160ae16032fec500e0af0a25c"
+      "checksum": "2f012900485b5d35c7f78efb0c86f68a"
     },
     "R/mod_ebird_aves.R": {
       "checksum": "7607835c83f9596767ec56c86a4b18ea"
@@ -3095,7 +3116,7 @@
       "checksum": "d06370ff7b60cb649d40997c64050bbf"
     },
     "R/utils_data.R": {
-      "checksum": "e3ecfee53f49d6e84b826291d139dc9c"
+      "checksum": "92ecfae60590a9d31b99462049bee736"
     },
     "R/utils_homologacion.R": {
       "checksum": "8681b8641a5a52ac8392a15b86b6dec5"
@@ -3104,10 +3125,10 @@
       "checksum": "1656a02653ff87d267ce977cfb90dd2b"
     },
     "R/utils_supabase.R": {
-      "checksum": "01ef515327e71e58fc8d1a63b49f5467"
+      "checksum": "4ca2d57d38ac2e6e66681834e041340a"
     },
     "README.md": {
-      "checksum": "810872d29b6a2819a52f077591e9b7c2"
+      "checksum": "8d005371b315ee85a8bc3835a03655a6"
     },
     "www/custom.css": {
       "checksum": "7e6b2340f5e530a5b1af2dc99ffde4ff"

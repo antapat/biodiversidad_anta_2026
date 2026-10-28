@@ -292,7 +292,7 @@ mod_delimitacion_poligono_server <- function(id, sf_ocurrencias, sf_ocurrencias_
         
         # 1. Intentar consulta acelerada PostGIS en Supabase
         df_especies_zona <- NULL
-        if (exists("supabase_consultar_zona", mode = "function")) {
+        if (app_data_mode() == "neon" && exists("supabase_consultar_zona", mode = "function")) {
           geojson_str <- tryCatch(geojsonsf::sf_geojson(drawn_valid), error = function(e) NULL)
           if (!is.null(geojson_str)) {
             df_especies_zona <- tryCatch(supabase_consultar_zona(geojson_str), error = function(e) NULL)

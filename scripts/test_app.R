@@ -26,8 +26,15 @@ source("R/mod_recambio_ecologico.R", encoding = "UTF-8")
 source("R/mod_metodologia_descarga.R", encoding = "UTF-8")
 
 message("Probando caché de datos compartido...")
+Sys.setenv(BIODIVERSIDAD_DATA_MODE = "local")
+# Fallar si el modo local intenta acceder a una base de datos.
+supabase_connect <- function() stop("El modo local no debe conectarse a Neon.")
 datos <- load_app_data()
 stopifnot(identical(datos, load_app_data()))
+stopifnot(identical(datos$origen, "Datos locales de pruebas"),
+  nrow(datos$patrimonio_natural) == 45L,
+  all(vapply(datos[c("especies", "resumen", "singularidad", "recambio", "cuadricula",
+    "ebird_especies", "ebird_resumen")], nrow, integer(1)) > 0L))
 
 message(sprintf("Especies Totales: %d | Ocurrencias sf: %d | Aves eBird: %d en %d hotspots | Distritos: %d", 
                 nrow(datos$especies), ifelse(is.null(datos$ocurrencias), 0, nrow(datos$ocurrencias)),

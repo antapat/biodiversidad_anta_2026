@@ -15,6 +15,7 @@ database_env$con <- NULL
 #' Obtener o reutilizar conexión PostgreSQL (Neon prioritario; Supabase opcional)
 #' @return Conexión DBI a PostgreSQL
 supabase_connect <- function() {
+  if (exists("app_data_mode", mode = "function") && app_data_mode() == "local") return(NULL)
   if (!is.null(database_env$con) && DBI::dbIsValid(database_env$con)) {
     return(database_env$con)
   }
