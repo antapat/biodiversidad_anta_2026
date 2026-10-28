@@ -4,6 +4,8 @@
 # Carga desde Neon PostgreSQL + PostGIS; fallback local optativo para desarrollo
 # ==============================================================================
 
+source("R/utils_spatial.R", encoding = "UTF-8")
+
 if (file.exists("R/utils_supabase.R")) {
   source("R/utils_supabase.R", encoding = "UTF-8")
 }
@@ -21,6 +23,7 @@ load_neon_required <- function() {
     "tab_cobertura_cuadricula", "geo_distritos", "geo_cuadricula_5km",
     "tab_ebird_especies", "tab_ebird_hotspots_resumen", "geo_ebird_hotspots"
   )
+  required <- required[!vapply(required, function(name) file.exists(spatial_asset_path(name)), logical(1))]
   missing <- required[!vapply(required, DBI::dbExistsTable, logical(1), conn = con)]
   if (length(missing) > 0) {
     stop("Faltan tablas/capas en Neon: ", paste(missing, collapse = ", "),
@@ -50,6 +53,8 @@ load_neon_table_or_local <- function(table_name, local_loader) {
 }
 
 load_neon_sf_or_local <- function(table_name, local_loader) {
+  # Capas versionadas junto al visor; Neon sigue suministrando las tablas.
+  if (file.exists(spatial_asset_path(table_name))) return(read_spatial_asset(table_name))
   con <- supabase_connect()
   if (!is.null(con)) {
     data <- tryCatch(sf::st_read(con, query = sprintf("SELECT * FROM %s", table_name), quiet = TRUE),
@@ -202,6 +207,8 @@ load_app_data <- local({
         ebird_especies = load_ebird_especies(),
         ebird_resumen = load_ebird_resumen(),
         ebird_hotspots = load_ebird_hotspots_sf(),
+        patrimonio_natural = read_spatial_asset("patrimonio_natural"),
+        origen_espacial = "GeoJSON gzip versionado en www/spatial; WGS84, precisión de 6 decimales",
         origen = "Neon PostgreSQL / PostGIS"
       )
     }

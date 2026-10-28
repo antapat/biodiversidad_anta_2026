@@ -337,7 +337,7 @@ mod_ebird_aves_server <- function(id, data_ebird_especies, data_ebird_resumen, s
       hotspots_sf <- sf_ebird_hotspots()
       dist_sf <- sf_distritos()
       
-      mapgl::maplibre(
+      maplibre_with_satellite(
         style = mapgl::carto_style("voyager"),
         bounds = dist_sf,
         projection = "mercator"

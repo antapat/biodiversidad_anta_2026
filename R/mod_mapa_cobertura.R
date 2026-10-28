@@ -216,7 +216,7 @@ mod_mapa_cobertura_server <- function(id, sf_distritos, sf_cuadricula, data_cuad
       tipo <- input$tipo_mapa
       
       if (tipo == "cobertura") {
-        m <- mapgl::maplibre(
+        m <- maplibre_with_satellite(
           style = mapgl::carto_style("positron"),
           bounds = grid_sf,
           projection = "mercator"
@@ -249,7 +249,7 @@ mod_mapa_cobertura_server <- function(id, sf_distritos, sf_cuadricula, data_cuad
         r_vals <- range(dist_sf$species, na.rm = TRUE)
         r_stops <- c("#e0f2fe", "#0f5132")
         
-        m <- mapgl::maplibre(
+        m <- maplibre_with_satellite(
           style = mapgl::carto_style("voyager"),
           bounds = dist_sf,
           projection = "mercator"
@@ -282,7 +282,7 @@ mod_mapa_cobertura_server <- function(id, sf_distritos, sf_cuadricula, data_cuad
         t_vals <- range(dist_sf$mean_turnover, na.rm = TRUE)
         t_stops <- c("#fef3c7", "#7f1d1d")
         
-        m <- mapgl::maplibre(
+        m <- maplibre_with_satellite(
           style = mapgl::carto_style("voyager"),
           bounds = dist_sf,
           projection = "mercator"

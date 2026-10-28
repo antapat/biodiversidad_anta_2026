@@ -22,7 +22,8 @@ archivos_despliegue <- c(
   "app.R",
   "DESCRIPTION",
   list.files("R", pattern = "\\.R$", full.names = TRUE),
-  c("www/custom.css", "www/logo_anta.jpg")
+  c("www/custom.css", "www/logo_anta.jpg"),
+  list.files("www/spatial", full.names = TRUE)
 )
 
 archivos_despliegue <- gsub("^\\./", "", archivos_despliegue)

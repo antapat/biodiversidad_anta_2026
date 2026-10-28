@@ -3,8 +3,6 @@ services:
     image: ${DOCKERHUB_USERNAME:-patanta}/biodiversidad_anta_2026:latest
     container_name: biodiversidad-anta
     restart: unless-stopped
-    ports:
-      - "${APP_PORT:-3838}:3838"
     environment:
       NEON_DATABASE_URL: ${NEON_DATABASE_URL:?Configura NEON_DATABASE_URL en .env}
       BIODIVERSIDAD_ALLOW_LOCAL_FALLBACK: "false"
@@ -15,3 +13,32 @@ services:
       timeout: 5s
       retries: 3
       start_period: 90s
+    networks:
+      - web
+
+  proxy:
+    image: caddy:2-alpine
+    container_name: biodiversidad-anta-proxy
+    restart: unless-stopped
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?Configura APP_DOMAIN en .env}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      biodiversidad-anta:
+        condition: service_healthy
+    networks:
+      - web
+
+networks:
+  web:
+
+volumes:
+  caddy_data:
+  caddy_config:

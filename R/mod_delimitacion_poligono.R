@@ -163,7 +163,7 @@ mod_delimitacion_poligono_server <- function(id, sf_ocurrencias, sf_ocurrencias_
       dist_sf <- sf_distritos()
       occ_sf <- sf_ocurrencias_mapa()
       
-      mapgl::maplibre(
+      maplibre_with_satellite(
         style = mapgl::carto_style("voyager"),
         bounds = dist_sf,
         projection = "mercator"

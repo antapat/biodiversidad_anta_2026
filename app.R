@@ -40,6 +40,7 @@ source("R/mod_explorador_distrital.R", encoding = "UTF-8")
 source("R/mod_delimitacion_poligono.R", encoding = "UTF-8")
 source("R/mod_ebird_aves.R", encoding = "UTF-8")
 source("R/mod_mapa_cobertura.R", encoding = "UTF-8")
+source("R/mod_patrimonio_natural.R", encoding = "UTF-8")
 source("R/mod_recambio_ecologico.R", encoding = "UTF-8")
 source("R/mod_metodologia_descarga.R", encoding = "UTF-8")
 
@@ -132,6 +133,11 @@ ui <- page_fluid(
       ),
       
       nav_panel(
+        title = tags$span(icon("mountain"), " Patrimonio Natural"),
+        div(class = "pt-3", mod_patrimonio_natural_ui("patrimonio"))
+      ),
+
+      nav_panel(
         title = tags$span(icon("project-diagram"), " Recambio Ecológico"),
         div(class = "pt-3", mod_recambio_ecologico_ui("recambio"))
       ),
@@ -222,6 +228,7 @@ server <- function(input, output, session) {
   mod_delimitacion_poligono_server("delimitacion", sf_ocurrencias, sf_ocurrencias_mapa, sf_distritos)
   mod_ebird_aves_server("ebird", data_ebird_especies, data_ebird_resumen, sf_ebird_hotspots, sf_distritos)
   mod_mapa_cobertura_server("mapa", sf_distritos, sf_cuadricula, data_cuadricula, data_resumen)
+  mod_patrimonio_natural_server("patrimonio", reactive(app_data$patrimonio_natural), sf_distritos)
   mod_recambio_ecologico_server("recambio", data_recambio, data_singularidad)
 mod_metodologia_descarga_server(
   "metodologia", data_especies, data_ebird_especies, data_cuadricula,

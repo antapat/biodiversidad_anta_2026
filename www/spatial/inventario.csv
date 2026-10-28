@@ -1,0 +1,13 @@
+"capa","origen","elementos","bytes_original","bytes_geojson","bytes_gzip","reduccion_pct","tolerancia_m","precision_decimales"
+"DISTRITOS_PROV_ANTA","data/spatial/DISTRITOS_PROV_ANTA.shp",9,101001,96135,23749,76.5,10,6
+"patrimonio_natural","data/spatial/D_0803_Patrimonio_natural_paisajistico.shp",45,28161,16277,2878,89.8,0,6
+"lugares_ebird_1_1","data/spatial/lugares_ebird.kmz",18,2217,3181,677,69.5,0,6
+"ocurrencias_fauna_anta_0803","data/spatial/ocurrencias_fauna_anta_0803.shp",66281,120698816,51239839,2462681,98,0,6
+"ocurrencias_flora_anta_0803","data/spatial/ocurrencias_flora_anta_0803.shp",6612,12233315,5076206,288632,97.6,0,6
+"ocurrencias_flora_fauna_anta_0803","data/spatial/ocurrencias_flora_fauna_anta_0803.shp",72893,134853165,56315935,2752373,98,0,6
+"ocurrencias_homologadas","data/spatial/ocurrencias_homologadas.gpkg",71096,53256192,114600873,5703747,89.3,0,6
+"geo_distritos","outputs/analisis_biodiversidad/biodiversidad_distritos.geojson",9,282829,97441,24098,91.5,10,6
+"geo_cuadricula_5km","outputs/analisis_biodiversidad/cobertura_cuadricula_5km.geojson",130,246411,120817,20940,91.5,10,6
+"geo_ebird_hotspots","outputs/analisis_biodiversidad/ebird_hotspots_anta.geojson",17,10692,10333,1493,86,0,6
+"geo_ocurrencias_puntos","outputs/analisis_biodiversidad/ocurrencias_puntos_sf.rds",67797,1860208,55503400,2600036,-39.8,0,6
+"geo_ocurrencias_mapa","outputs/analisis_biodiversidad/ocurrencias_mapa_sf.rds",3544,95088,1350932,60793,36.1,0,6

@@ -58,22 +58,68 @@ Para automatizar la actualización, cree una tarea en el Programador de tareas d
 shiny::runApp(".", launch.browser = TRUE)
 ```
 
-### Ejecutar con Docker
+### Publicar en un VPS con Docker
 
-Docker permite alojar la app en un servidor propio o VPS que mantenga el contenedor activo. No depende de los límites de sesión de shinyapps.io, aunque la disponibilidad depende del servidor y del plan de Neon.
+El despliegue de producción usa Caddy como proxy inverso: recibe tráfico en HTTP/HTTPS, obtiene y renueva el certificado TLS automáticamente y reenvía las solicitudes al contenedor Shiny. El puerto 3838 solo queda disponible dentro de la red Docker.
 
-1. Instala Docker Engine y Docker Compose en el servidor.
-2. Copia `.env.example` a `.env` y configura `NEON_DATABASE_URL` con la conexión pooled de Neon. No subas `.env` a Git.
-3. Después de publicar la imagen en Docker Hub, desde la carpeta con `docker-compose.prod.yml` y `.env` ejecuta `docker compose -f docker-compose.prod.yml pull` y luego `docker compose -f docker-compose.prod.yml up -d`.
-4. Abre `http://<servidor>:3838`. Revisa el estado con `docker compose -f docker-compose.prod.yml ps` y los registros con `docker compose -f docker-compose.prod.yml logs -f biodiversidad-anta`.
+#### Requisitos
 
-El contenedor instala R y las dependencias de la app durante la construcción; solo copia `app.R`, `R/` y `www/`. No incluye los datos locales: necesita que las tablas y capas estén cargadas en Neon. Para producción pública, coloca un proxy inverso con HTTPS delante del puerto 3838 y restringe el acceso al archivo `.env`.
+- Un VPS Linux con una IP pública fija y Docker Engine con el complemento Docker Compose.
+- Un dominio o subdominio bajo control de la municipalidad.
+- Reglas de firewall del VPS y del proveedor que permitan entrada TCP 80 y 443. No es necesario publicar 3838.
+- El DNS `A` del dominio apuntando a la IP del VPS (y `AAAA` solo si el VPS tiene IPv6 funcional). Espera la propagación DNS antes de iniciar Caddy.
+- La URL pooled de Neon y una imagen publicada en Docker Hub.
 
-#### Publicar en Docker Hub
+#### Preparar la publicación de imagen
 
-El workflow `.github/workflows/docker-publish.yml` inicia sesión en Docker Hub como `patanta` y publica `patanta/biodiversidad_anta_2026`. Configura el secret `DOCKERHUB_TOKEN` con un access token de Docker Hub que pueda escribir en ese repositorio. En el servidor, el Compose usa el mismo namespace; luego ejecuta `docker compose -f docker-compose.prod.yml pull` y `docker compose -f docker-compose.prod.yml up -d`.
+El workflow `.github/workflows/docker-publish.yml` inicia sesión en Docker Hub como `patanta` y publica `patanta/biodiversidad_anta_2026`. En GitHub, configura el secret `DOCKERHUB_TOKEN` con un access token que pueda escribir en ese repositorio. Ejecuta el workflow manualmente desde **Actions → Build and publish Docker image → Run workflow**, o publica un cambio a `main` en las rutas configuradas.
+
+#### Configurar el VPS
+
+Conéctate por SSH y ejecuta estos pasos en el VPS (Ubuntu/Debian):
+
+1. Instala Docker Engine y el complemento Compose siguiendo la guía oficial de Docker para la distribución del VPS.
+2. Crea una carpeta de despliegue, por ejemplo `/opt/biodiversidad-anta`, y copia allí `docker-compose.prod.yml` y `Caddyfile` desde este repositorio. Puedes usar `git clone` si Git está instalado.
+3. En esa carpeta, crea `.env` a partir de `.env.example`. Configura `APP_DOMAIN` con el dominio real y `NEON_DATABASE_URL` con la conexión pooled de Neon. Protege el archivo: `chmod 600 .env`.
+4. Inicia la aplicación:
+
+```bash
+docker compose -f docker-compose.prod.yml pull
+docker compose -f docker-compose.prod.yml up -d
+docker compose -f docker-compose.prod.yml ps
+```
+
+5. Consulta los registros si el sitio no carga:
+
+```bash
+docker compose -f docker-compose.prod.yml logs -f biodiversidad-anta
+docker compose -f docker-compose.prod.yml logs -f proxy
+```
+
+Cuando GitHub Actions publique una imagen nueva, actualiza el VPS con `docker compose -f docker-compose.prod.yml pull` y `docker compose -f docker-compose.prod.yml up -d`. Caddy conserva los certificados en volúmenes Docker y renueva HTTPS automáticamente.
+
+El contenedor necesita que las tablas y capas requeridas ya estén cargadas en Neon. No guarda datos locales. Mantén privado `.env` y limita el acceso SSH al VPS.
 
 ---
 *Municipalidad Provincial de Anta · Cusco, Perú — Actualización 2026*
 
 El lanzador guarda un registro de cada ejecución en `logs/` y devuelve error al Programador de tareas si la carga falla.
+
+## Patrimonio natural y capas ligeras
+
+La pestaña **Patrimonio Natural** presenta los 45 sitios del inventario paisajístico, con filtros por distrito, tipo y búsqueda por nombre/subtipo. La referencia institucional es el Plan de Acondicionamiento Territorial de la Provincia de Anta 2025–2045, en cuyo marco se consolidó la información del patrimonio natural y la biodiversidad provincial. Incluye mapa, atributos y descarga de la selección en CSV o GeoJSON. El campo de verificación de ubicación se excluye del módulo y sus descargas. Las fichas emergentes tienen fondo verde oscuro, texto blanco y borde ámbar, y pueden abrirse al pulsar los puntos.
+
+Las capas cartográficas se distribuyen como instantáneas versionadas en `www/spatial/*.geojson.gz`, leídas una vez por proceso. Tienen CRS WGS84, seis decimales y simplificación de líneas/polígonos de 10 metros en UTM 18S. Los puntos mantienen sus posiciones con redondeo submétrico; los atributos se conservan. Los originales de `data/spatial` y `outputs` no se sobrescriben. La geometría simplificada es para visualización; los análisis de precisión deben utilizar los originales.
+
+Para regenerar **todas** las capas SHP, GPKG y KMZ de `data/spatial`, y las cinco capas utilizadas por el visor desde `outputs/analisis_biodiversidad`, ejecutar desde la raíz:
+
+```powershell
+Rscript scripts/optimizar_capas.R
+Rscript scripts/test_patrimonio.R
+```
+
+`www/spatial/inventario.csv` registra origen, elementos, tamaños antes/después y parámetros. Se elige GeoJSON gzip por compatibilidad directa con sf/MapLibre y para evitar un decodificador GeoParquet en el navegador. Las capas adicionales quedan disponibles como archivos comprimidos; el visor utiliza las cinco capas `geo_*` y `patrimonio_natural`.
+
+**Actualización espacial:** al cambiar los insumos, regenerar los archivos y volver a publicar la aplicación. Neon sigue suministrando las tablas estadísticas y catálogos; para las cinco capas espaciales se prefieren las instantáneas optimizadas incluidas en la versión, usando PostGIS si falta una instantánea. Actualizar Neon por sí solo no actualiza estas instantáneas. Docker incluye `www` y el despliegue de shinyapps.io incluye `www/spatial`. No se ha publicado automáticamente esta versión.
+
+La primera conversión comprende 12 capas (323,7 MB de insumos frente a aproximadamente 13,9 MB comprimidos). El inventario de patrimonio ocupa unos 2,9 KB. La comparación incluye formatos originales diferentes: el GeoJSON gzip de ocurrencias completas resulta mayor que su RDS binario comprimido; este RDS se conserva. Para mostrar ocurrencias se mantiene la capa agregada `geo_ocurrencias_mapa`, de unos 61 KB.

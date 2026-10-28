@@ -21,6 +21,7 @@ source("R/mod_explorador_distrital.R", encoding = "UTF-8")
 source("R/mod_delimitacion_poligono.R", encoding = "UTF-8")
 source("R/mod_ebird_aves.R", encoding = "UTF-8")
 source("R/mod_mapa_cobertura.R", encoding = "UTF-8")
+source("R/mod_patrimonio_natural.R", encoding = "UTF-8")
 source("R/mod_recambio_ecologico.R", encoding = "UTF-8")
 source("R/mod_metodologia_descarga.R", encoding = "UTF-8")
 
